@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffManagementDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ShipmentConfirmDelete.aspx.cs" Inherits="_1_ConfirmDelete" %>
 
 <!DOCTYPE html>
 

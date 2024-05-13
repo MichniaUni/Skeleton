@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing6", "Testing6\Testin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingSupplierManagement", "Testing5\TestingSupplierManagement.csproj", "{6B836712-3706-49E8-A57E-ADD4149D788B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingStaffManagement", "Testing4\TestingStaffManagement.csproj", "{D7E86DE2-138C-4B6B-A195-C247244515E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingShipment", "Testing4\TestingShipment.csproj", "{D7E86DE2-138C-4B6B-A195-C247244515E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingOrderProcessing", "Testing3\TestingOrderProcessing.csproj", "{7032FF54-9316-4FFF-9612-EBA55F9781BA}"
 EndProject
