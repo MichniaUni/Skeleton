@@ -93,5 +93,64 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AnStock.ItemPrice, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 ItemID = 21;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestItemIDFound()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ItemID = 21;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //check the ItemID
+            if (AnStock.ItemID !=21)
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestRestockDateFound()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ItemID = 20;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //check the ItemID
+            if (AnStock.RestockDate != Convert.ToDateTime("23/12/2020"))
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
     }
 }
