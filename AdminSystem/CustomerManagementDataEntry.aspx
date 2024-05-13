@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body> This is the customer data entry page.
     <form id="form1" runat="server">
         <div>
         </div>
