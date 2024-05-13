@@ -4,9 +4,16 @@ using System;
 
 namespace Testing2
 {
+        
     [TestClass]
     public class tstStock
     {
+        /******************GOOD TEST DATA******************/
+        string ItemDescription = "RedDrones";
+        string RestockDate = DateTime.Now.ToShortDateString();
+        string QuantityInStock = "21";
+        string ItemPrice = "1.23";
+
 
         /******************INSTANCE OF THE CLASS TEST******************/
 
@@ -248,6 +255,22 @@ namespace Testing2
             }
             //test to see if the result is true
             Assert.IsTrue(OK);
+        }
+
+        /******************FIND METHOD TEST******************/
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+          
         }
     }
 }
