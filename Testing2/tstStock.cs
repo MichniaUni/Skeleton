@@ -7,6 +7,9 @@ namespace Testing2
     [TestClass]
     public class tstStock
     {
+
+        /******************INSTANCE OF THE CLASS TEST******************/
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -15,6 +18,8 @@ namespace Testing2
             //test to see taht is there
             Assert.IsNotNull(AnStock);
         }
+
+        /******************PROPERTY OK TESTS******************/
 
         [TestMethod]
         public void IsActivePropertyOK()
@@ -94,6 +99,8 @@ namespace Testing2
             Assert.AreEqual(AnStock.ItemPrice, TestData);
         }
 
+        /******************FIND METHOD TEST******************/
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -108,6 +115,8 @@ namespace Testing2
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
+
+        /******************PROPERTY FOUND TESTS******************/
 
         [TestMethod]
         public void TestItemIDFound()
@@ -146,6 +155,94 @@ namespace Testing2
             Found = AnStock.Find(ItemID);
             //check the ItemID
             if (AnStock.RestockDate != Convert.ToDateTime("23/12/2020"))
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestQuantityInStockFound()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ItemID = 20;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //check the ItemID
+            if (AnStock.QuantityInStock != 20)
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestItemDescriptionFound()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ItemID = 20;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //check the ItemID
+            if (AnStock.ItemDescription != "RedDrone")
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIsActiveFound()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ItemID = 20;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //check the ItemID
+            if (AnStock.IsActive != true)
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestItemPriceFound()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ItemID = 20;
+            //invoke the method
+            Found = AnStock.Find(ItemID);
+            //check the ItemID
+            if (AnStock.ItemPrice != 1.23m)
             {
                 OK = false;
             }
