@@ -123,6 +123,9 @@ namespace ClassLibrary
             return true;
         }
 
-        
+        public string Valid(string itemDescription, string restockDate, string quantityInStock, string itemPrice)
+        {
+            return "";
+        }
     }
 }
