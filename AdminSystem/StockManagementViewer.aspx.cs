@@ -16,5 +16,9 @@ public partial class _1Viewer : System.Web.UI.Page
         AnStock = (clsStock)Session["AnStock"];
         //display the Item Description for this entry
         Response.Write(AnStock.ItemDescription);
+        Response.Write(AnStock.RestockDate);
+        Response.Write(AnStock.QuantityInStock);
+        Response.Write(AnStock.ItemPrice);
+        Response.Write(AnStock.IsActive);
     }
 }

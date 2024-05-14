@@ -25,7 +25,7 @@
             <asp:TextBox ID="txtRestockDate" runat="server" style="z-index: 1; left: 202px; top: 117px; position: absolute; width: 319px; height: 25px"></asp:TextBox>
         </p>
         <asp:TextBox ID="txtQuantityInStock" runat="server" height="25px" style="z-index: 1; left: 202px; top: 152px; position: absolute; width: 319px"></asp:TextBox>
-        <asp:TextBox ID="ItemPrice" runat="server" height="25px" style="z-index: 1; left: 202px; top: 194px; position: absolute; width: 319px"></asp:TextBox>
+        <asp:TextBox ID="txtItemPrice" runat="server" height="25px" style="z-index: 1; left: 202px; top: 194px; position: absolute; width: 319px"></asp:TextBox>
         <p>
             &nbsp;</p>
         <p>

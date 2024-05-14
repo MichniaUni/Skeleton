@@ -19,6 +19,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnStock = new clsStock();
         //capture the Itemdescription
         AnStock.ItemDescription = txtItemDescription.Text;
+        //capture the RestockDate
+        AnStock.RestockDate = Convert.ToDateTime(txtRestockDate.Text);
+        //capture the QuantityInStock
+        AnStock.QuantityInStock = Convert.ToInt32(txtQuantityInStock.Text);
+        //capture the ItemPrice
+        AnStock.ItemPrice = Convert.ToDecimal(txtItemPrice.Text);
+        //capture the Is Active
+        AnStock.IsActive = chkIsActive.Checked;
         //store the address in the session object
         Session["AnStock"] = AnStock;              
         //navigate to the view page
