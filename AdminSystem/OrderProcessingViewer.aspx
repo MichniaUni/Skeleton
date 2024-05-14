@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    This is the order ptocessing viewer page, thanks!
+  
     <form id="form1" runat="server">
         <div>
         </div>
