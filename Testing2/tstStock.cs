@@ -270,7 +270,484 @@ namespace Testing2
             Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
-          
+        }
+
+        /******************PARAMETER TEST ItemDescription******************/
+
+        [TestMethod]
+        public void ItemDescriptionMinLessOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "*";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionMinPlusOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "**";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionMaxLessOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "";
+            ItemDescription = ItemDescription.PadLeft(49, '*');
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionMax()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "";
+            ItemDescription = ItemDescription.PadLeft(50, '*');
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionMid()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "";
+            ItemDescription = ItemDescription.PadLeft(25, '*');
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionMaxPlusOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "";
+            ItemDescription = ItemDescription.PadLeft(51, '*');
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemDescriptionExtremeMax()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemDescription = "";
+            ItemDescription = ItemDescription.PadLeft(1000, '*');
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************PARAMETER TEST RestockDate******************/
+
+
+        [TestMethod]
+        public void RestockDateExtremeMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime  TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate less 100years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMinLessOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMinPlusOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMaxLessOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate plus 364 days
+            TestDate = TestDate.AddDays(364);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMax()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate plus 365 days
+            TestDate = TestDate.AddDays(365);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMaxPlusOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate plus 366 days
+            TestDate = TestDate.AddDays(366);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateMid()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate plus 182 days
+            TestDate = TestDate.AddDays(182);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateExtremeMax()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today date
+            TestDate = DateTime.Now.Date;
+            //change the date to TestDate plus 100years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string RestockDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RestockDateInvalidData()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //set the RestockDate to a non date value
+            string RestockDate = "this is not a date!";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************PARAMETER TEST QuantityInStock******************/
+
+        [TestMethod]
+        public void QuantityInStockExtremeMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string QuantityInStock = "-10000000";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInStockMinLessOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string QuantityInStock = "-1";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInStockMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string QuantityInStock = "0";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInStockMinPlusOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string QuantityInStock = "1";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInStockInvalidData()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //set the QuantityInStock to a non date value
+            string QuantityInStock = "this is not a value!";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        /******************PARAMETER TEST ItemPrice******************/
+
+        [TestMethod]
+        public void ItemPriceExtremeMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemPrice = "-10000000";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemPriceMinLessOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemPrice = "-0.01";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemPriceMin()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemPrice = "0.00";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemPriceMinPlusOne()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string ItemPrice = "0.01";
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemPriceInvalidData()
+        {
+            //create an instance of the class Stock
+            clsStock AnStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //set the ItemPrice to a non date value
+            string ItemPrice = "this is not a value!";
+            //invoke the method
+            Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
