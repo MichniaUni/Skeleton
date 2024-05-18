@@ -125,7 +125,85 @@ namespace ClassLibrary
 
         public string Valid(string itemDescription, string restockDate, string quantityInStock, string itemPrice)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //create a temporary variable to store the data values
+            Int32 ValueTemp;
+            //create a temporary variable to store the date values
+            Decimal PriceTemp;
+            
+            //if the itemDescription is blank
+            if (itemDescription.Length == 0)
+            {
+                //record error
+                Error = Error + "The Item Description may not be blank : ";
+            }
+            //if Item description is greater then 50 characters 
+            if (itemDescription.Length > 50)
+            {
+                //record error
+                Error = Error + "The Item Description must be less then 50 characters : ";
+            }
+     
+            try
+            {
+                //copy the restockDate values to the DateTemp variable
+                DateTemp = Convert.ToDateTime(restockDate);
+                //check if the date is less than today's date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date connot be in the pass : ";
+                }
+                //check if the date is grater than today's date plus 365 days
+                if (DateTemp > DateTime.Now.Date.AddDays(365))
+                {
+                    //record error
+                    Error = Error + "The date connot grater then today plus 365 days : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not valide date : ";
+            }
+
+            try
+            {
+                //copy the QuantityInStock values to the ValueTemp variable
+                ValueTemp = Convert.ToInt32(quantityInStock);
+                //check if the value is less than 0 
+                if (ValueTemp < 0)
+                {
+                    Error = Error + "The value connot be less the 0 : ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The value was not valid vatue : ";
+            }
+
+            try
+            {
+                //copy the ItemPrice values to the PriceTemp variable
+                PriceTemp = Convert.ToDecimal(itemPrice);
+                //check if the value is less than 0 
+                if (PriceTemp < 0.00m)
+                {
+                    Error = Error + "The prise connot be less the 0.00 : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The price was not valid vatue : ";
+            }
+            
+            //return any error messages
+            return Error;
         }
     }
 }
