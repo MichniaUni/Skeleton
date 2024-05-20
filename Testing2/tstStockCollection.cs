@@ -48,7 +48,7 @@ namespace Testing2
             //create an instance of the class Stock
             clsStockCollection AllStock = new clsStockCollection();
             //create some test data to assign to the property
-            Int32 SomeCount = 0;
+            Int32 SomeCount = 2;
             //assign the data to the property
             AllStock.Count = SomeCount;
             //test to see that the two values are the same
@@ -97,6 +97,15 @@ namespace Testing2
             AllStock.ItemList = TestList;
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.Count, TestList.Count);
+        }
+
+        [TestMethod]
+        public void TwoRecordsPresent()
+        {
+            //create an instance of the class Stock
+            clsStockCollection AllStock = new clsStockCollection();
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, 2);
         }
     }
 }
