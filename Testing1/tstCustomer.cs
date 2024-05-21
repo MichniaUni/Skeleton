@@ -37,9 +37,9 @@ namespace Testing1
             //create some test data to assign to the customer
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the customer
-            ACustomer.DateAdded = TestData;
+            ACustomer.DateJoined = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(ACustomer.DateAdded, TestData);
+            Assert.AreEqual(ACustomer.DateJoined, TestData);
         }
 
         [TestMethod]
