@@ -55,16 +55,16 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void ItemIDPropertyOK()
+        public void ItemIdPropertyOK()
         {
             //create an instance of the class Stock
             clsStock AnStock = new clsStock();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnStock.ItemID = TestData;
+            AnStock.ItemId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnStock.ItemID, TestData);
+            Assert.AreEqual(AnStock.ItemId, TestData);
         }
 
         [TestMethod]
@@ -116,9 +116,9 @@ namespace Testing2
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 ItemID = 21;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
+            Found = AnStock.Find(ItemId);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
@@ -126,7 +126,7 @@ namespace Testing2
         /******************PROPERTY FOUND TESTS******************/
 
         [TestMethod]
-        public void TestItemIDFound()
+        public void TestItemIdFound()
         {
             //create an instance of the class Stock
             clsStock AnStock = new clsStock();
@@ -135,11 +135,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ItemID = 21;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
-            //check the ItemID
-            if (AnStock.ItemID !=21)
+            Found = AnStock.Find(ItemId);
+            //check the ItemId
+            if (AnStock.ItemId !=3)
             {
                 OK = false;
             }
@@ -157,11 +157,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ItemID = 20;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
-            //check the ItemID
-            if (AnStock.RestockDate != Convert.ToDateTime("23/12/2020"))
+            Found = AnStock.Find(ItemId);
+            //check the ItemId
+            if (AnStock.RestockDate != Convert.ToDateTime("21/06/2024"))
             {
                 OK = false;
             }
@@ -179,11 +179,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ItemID = 20;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
-            //check the ItemID
-            if (AnStock.QuantityInStock != 20)
+            Found = AnStock.Find(ItemId);
+            //check the ItemId
+            if (AnStock.QuantityInStock != 15)
             {
                 OK = false;
             }
@@ -201,10 +201,10 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ItemID = 20;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
-            //check the ItemID
+            Found = AnStock.Find(ItemId);
+            //check the ItemId
             if (AnStock.ItemDescription != "RedDrone")
             {
                 OK = false;
@@ -223,10 +223,10 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ItemID = 20;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
-            //check the ItemID
+            Found = AnStock.Find(ItemId);
+            //check the ItemId
             if (AnStock.IsActive != true)
             {
                 OK = false;
@@ -245,11 +245,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ItemID = 20;
+            Int32 ItemId = 3;
             //invoke the method
-            Found = AnStock.Find(ItemID);
-            //check the ItemID
-            if (AnStock.ItemPrice != 1.23m)
+            Found = AnStock.Find(ItemId);
+            //check the ItemId
+            if (AnStock.ItemPrice != 126.50m)
             {
                 OK = false;
             }

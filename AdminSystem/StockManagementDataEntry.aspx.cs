@@ -52,4 +52,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = Error;
         }
     }
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsStock AnStock = new clsStock();
+        //creat a variable to store the primary key
+        Int32 ItemId;
+        //create a variable to store the result of find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        ItemId = Convert.ToInt32(txtItemId.Text);
+        //find the record
+        Found = AnStock.Find(ItemId);
+        //if found
+        if(Found == true)
+        {
+            //display the values of the propertise in the form
+            txtItemDescription.Text = AnStock.ItemDescription;
+            txtRestockDate.Text = AnStock.RestockDate.ToString();
+            txtQuantityInStock.Text = AnStock.QuantityInStock.ToString();
+            txtItemPrice.Text = AnStock.ItemPrice.ToString();
+            chkIsActive.Checked = AnStock.IsActive;
+        }
+    }
 }

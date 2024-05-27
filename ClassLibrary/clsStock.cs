@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace ClassLibrary
 {
@@ -39,19 +40,19 @@ namespace ClassLibrary
         }
 
         //private data member for the stock id property
-        private Int32 mItemID;
-        // ItemID public property
-        public Int32 ItemID 
+        private Int32 mItemId;
+        // ItemId public property
+        public Int32 ItemId 
         {
             get
             {
                 //this line of code sends data out of the property
-                return mItemID;
+                return mItemId;
             }
             set
             {
                 //this line of code allows data into the property
-                mItemID = value;
+                mItemId = value;
             }
         
         }
@@ -110,17 +111,33 @@ namespace ClassLibrary
 
         /****** FIND METHOD ******/
 
-        public bool Find(int itemID)
+        public bool Find(int ItemId)
         {
-            //set the private data members to the test data value
-            mItemID = 21;
-            mItemDescription = "RedDrone";
-            mRestockDate = Convert.ToDateTime("23/12/2020");
-            mQuantityInStock = 20;
-            mItemPrice = 1.23m;
-            mIsActive = true;
-            //alwayse return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the Item Id to search for
+            DB.AddParameter("@ItemId", ItemId);
+            //execute the store procedure
+            DB.Execute("sproc_tbStock_FilterByItemId");
+            if (DB.Count == 1 )
+            {
+                //copy the data from the database to the private data member
+                mItemId = Convert.ToInt32(DB.DataTable.Rows[0]["ItemId"]);
+                mItemDescription = Convert.ToString(DB.DataTable.Rows[0]["ItemDescription"]);
+                mRestockDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RestockDate"]);
+                mQuantityInStock = Convert.ToInt32(DB.DataTable.Rows[0]["QuantityInStock"]);
+                mItemPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["ItemPrice"]);
+                mIsActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsActive"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+
         }
 
         public string Valid(string itemDescription, string restockDate, string quantityInStock, string itemPrice)

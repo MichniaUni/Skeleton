@@ -23,7 +23,7 @@ namespace ClassLibrary
                 //create a blank address
                 clsStock AnStock = new clsStock();
                 //read it from fields for the current record
-                AnStock.ItemID = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemId"]);
+                AnStock.ItemId = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemId"]);
                 AnStock.ItemDescription = Convert.ToString(DB.DataTable.Rows[Index]["ItemDescription"]);
                 AnStock.RestockDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RestockDate"]);
                 AnStock.QuantityInStock = Convert.ToInt32(DB.DataTable.Rows[Index]["QuantityInStock"]);
