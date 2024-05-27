@@ -11,4 +11,19 @@ public partial class _1Viewer : System.Web.UI.Page
     {
 
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("SupplierManagementConfirmDelete.aspx");
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("SupplierManagementDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+
+    }
 }
