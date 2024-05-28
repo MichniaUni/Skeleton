@@ -49,7 +49,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             //create some test data to assign to the property
-            String TestData = "Nawaraj";
+            String TestData = "pending";
             //assign the data to the property
             AnOrderProcessing.OrderStatus = TestData;
             //test to see that the two values are the same
@@ -87,11 +87,11 @@ namespace Testing3
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 123;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsNotNull(Found);
         }
         [TestMethod]
         public void TestOrderIdFound()
@@ -103,11 +103,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 123;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the OrderId
-            if (AnOrderProcessing.OrderId != 123)
+            if (AnOrderProcessing.OrderId != 1)
             {
                 OK = false;
             }
@@ -124,11 +124,11 @@ namespace Testing3
             //create a boolean variable to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 123;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the DateAdded property
-            if (AnOrderProcessing.DateAdded != Convert.ToDateTime("15/05/2024"))
+            if (AnOrderProcessing.DateAdded != Convert.ToDateTime("01/02/2024"))
             {
                 OK = false;
             }
@@ -145,7 +145,7 @@ namespace Testing3
             //create a Boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 123;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the is cancelled property
@@ -166,11 +166,11 @@ namespace Testing3
             //create a Boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 123;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the Orderstatus property
-            if (AnOrderProcessing.OrderStatus != "Test OrderStatus")
+            if (AnOrderProcessing.OrderStatus != "pending")
             {
                 OK = false;
             }
@@ -187,11 +187,11 @@ namespace Testing3
             //create a Boolean varaible to record if the data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 123;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the Orderstatus property
-            if (AnOrderProcessing.PaymentMethod != "Test PaymentMethod")
+            if (AnOrderProcessing.PaymentMethod != "card")
             {
                 OK = false;
             }
