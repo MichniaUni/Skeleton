@@ -93,16 +93,35 @@ namespace ClassLibrary
                 mPaymentMethod = value;
             }
         }
-        public bool Find(int orderId)
+
+        /******FIND METHOD******/
+        public bool Find(int OrderId)
         {
-            //set the private data members to the test data value
-            mOrderId = 123;
-            mDateAdded = Convert.ToDateTime("15/05/24");
-            mIsCancelled = true;
-            mOrderStatus = "Test OrderStatus";
-            mPaymentMethod = "Test PaymentMethod";
-;            //always return true
-            return true;
+            //create the instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for 
+            DB.AddParameter("@OrderId", OrderId);
+            //execute the stored procedure 
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            //if one round is found ( there should be either one or zero)
+            if (DB.Count ==1)
+            {
+                //copy the data from the database to the private data members
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
+                mPaymentMethod = Convert.ToString(DB.DataTable.Rows[0]["PaymentMethod"]);
+                mIsCancelled = Convert.ToBoolean(DB.DataTable.Rows[0]["IsCancelled"]);
+                // return that everything worked ok
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+           
         }
   
     }
