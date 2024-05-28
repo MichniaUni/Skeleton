@@ -5,14 +5,15 @@ namespace ClassLibrary
 {
     public class clsStockCollection
     {
+        
         //private data member for the list
         List<clsStock> mStockList = new List<clsStock>();
         //private member data for thisStock
         clsStock mThisItem = new clsStock();
 
-
         public clsStockCollection()
         {
+            /*
             //variable for the index
             Int32 Index = 0;
             //variable to store the records count
@@ -40,7 +41,13 @@ namespace ClassLibrary
                 //pointat the next record
                 Index++;
             }
-
+            */
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the store procedure
+            DB.Execute("sproc_tbStock_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
        
 
@@ -128,7 +135,53 @@ namespace ClassLibrary
             DB.AddParameter("@ItemId", mThisItem.ItemId);
             //execute the store procedure
             DB.Execute("sproc_tbStock_Delete");
+        }
+
+        public void ReportByItemDescription(string ItemDescription)
+        {
+            //filters the records based on a full ar partial description
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the itemDescription parameter to the database
+            DB.AddParameter("@ItemDescription", ItemDescription);
+            //execute the stored procedure
+            DB.Execute("sproc_tbStock_FilterByItemDescription");
+            //populate the array list with the data table
+            PopulateArray(DB);
 
         }
+
+        
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //cleare the private array list
+            mItemList = new List<clsStock>();
+            //while there are records to process
+            while(Index < RecordCount)
+            {
+                //create a blank address object
+                clsStock AnStock = new clsStock();
+                //read in the fields from the current records
+                AnStock.ItemId = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemId"]);
+                AnStock.ItemDescription = Convert.ToString(DB.DataTable.Rows[Index]["ItemDescription"]);
+                AnStock.RestockDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RestockDate"]);
+                AnStock.QuantityInStock = Convert.ToInt32(DB.DataTable.Rows[Index]["QuantityInStock"]);
+                AnStock.ItemPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["ItemPrice"]);
+                AnStock.IsActive = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsActive"]);
+                //add the record to the private data member
+                mItemList.Add(AnStock);
+                //point at the next record
+                Index++;
+            }
+
+        }
+        
     }
 }
