@@ -210,7 +210,49 @@ namespace Testing5
             Assert.IsTrue(OK);
 
         }
-        
+        [TestMethod]
+        public void TestQuantityFound()
+        { 
+            //create an instance of the class you want
+            clsSupplier AnSupplier = new clsSupplier();
+            //create boolean variable to store the result of the search
+        Boolean Found= false;
+            //create a boolean variable to record if data id PK
+        Boolean OK= true;
+            //create some test dat to use with the method
+         Int32 SupplierID= 3;
+         //invoke the method
+         Found =AnSupplier.Find(SupplierID);
+            //check the Quantity property
+            if (AnSupplier.Quantity != 10 )
+            {
+                OK= false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestExpiryDateFound()
+        {
+            // create an instance of the clsSupplier
+            clsSupplier AnSupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            // create a Boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some tests data to use with the mwthod
+            Int32 SupplierID = 3;
+            //invoke the method
+            Found = AnSupplier.Find(SupplierID);
+            //check the productiondate property
+            if (AnSupplier.ExpiryDate != Convert.ToDateTime("06/12/2004"))
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+
+        }
 
     }
 }

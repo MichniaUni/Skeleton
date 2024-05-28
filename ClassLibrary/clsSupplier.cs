@@ -75,10 +75,42 @@ namespace ClassLibrary
             }
         }
 
+        //private data member for Quantity Proverty
+        private Int32 mQuantity;
+        //Quantity public property
+        public int Quantity 
+        {
+            get
+            {
+                //this line sends data out of the property
+                return mQuantity;
+            }
+            set
+            {
 
-        public int Quantity { get; set; }
+                // this code allows data into the property
+                mQuantity = value;
+            }
+        }
         public decimal Price { get; set; }
-        public DateTime ExpiryDate { get; set; }
+
+        // private data member for Expiry date property
+        private DateTime mExpiryDate;
+        //ExpiryDate public property
+        public DateTime ExpiryDate 
+        {
+            get
+            {
+                //THIS LINES SENDS data out of property
+                return mExpiryDate;
+
+            }
+            set
+            {
+                //this code allows data into the pperty
+                mExpiryDate = value;
+            }
+        }
 
         public bool Find(int supplierID)
         {
@@ -87,6 +119,8 @@ namespace ClassLibrary
             mProductionDate = Convert.ToDateTime("06/12/2002");
             mSupplierName = "Test SupplierName";
             mShipmentstatus=true;
+            mQuantity = 10;
+            mExpiryDate = Convert.ToDateTime("06/12/2004");
             //always return true
             return true;
 
