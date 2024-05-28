@@ -190,5 +190,64 @@ namespace Testing2
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+
+        /******************FILTER METHOD******************/
+
+        [TestMethod]
+        public void ReportByItemDescriptionMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string (should return all records
+            FilteredStocks.ReportByItemDescription("");
+            //test to see the two values are the same
+            Assert.AreEqual(AllStock.Count,  FilteredStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByItemDescriptionNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a description that doesn't exist
+            FilteredStocks.ReportByItemDescription("******");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+
+        /*
+        [TestMethod]
+        public void ReportByItemDescriptionTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //applay the Item Description that doesn't exist
+            FilteredStocks.ReportByItemDescription("xxxxxx");
+            //check that the coprect number of records are found
+            if(FilteredStocks.Count == 2)
+            {
+                //check to see  the first record is 41
+                if (FilteredStocks.ItemList[0].ItemId != 41)
+                {
+                    OK = false;
+                }
+                //check to see  the first record is 42
+                if (FilteredStocks.ItemList[1].ItemId != 42)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+        */
     }
 }
