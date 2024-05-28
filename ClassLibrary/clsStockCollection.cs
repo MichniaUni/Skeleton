@@ -118,5 +118,17 @@ namespace ClassLibrary
             //execute the store procedure
             DB.Execute("sproc_tbStock_Update");
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisItem
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the store procedure
+            DB.AddParameter("@ItemId", mThisItem.ItemId);
+            //execute the store procedure
+            DB.Execute("sproc_tbStock_Delete");
+
+        }
     }
 }
