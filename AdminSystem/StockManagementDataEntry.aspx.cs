@@ -41,10 +41,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.QuantityInStock = Convert.ToInt32(QuantityInStock);
             //capture the ItemPrice
             AnStock.ItemPrice = Convert.ToDecimal(ItemPrice);
-            //store the address in the session object
-            Session["AnStock"] = AnStock;
-            //navigate to the view page
-            Response.Redirect("StockManagementViewer.aspx");
+            //capture the IsActive
+            AnStock.IsActive = chkIsActive.Checked;
+            //create a new instance of the address collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the ThisItem property
+            StockList.ThisItem = AnStock;
+            //add the new record
+            StockList.Add();
+            //redirect back to the list page
+            Response.Redirect("StockManagementList.aspx");
         }
         else
         {
