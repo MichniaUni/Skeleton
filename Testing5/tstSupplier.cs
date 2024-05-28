@@ -105,6 +105,113 @@ namespace Testing5
             Assert.AreEqual(AnSupplier.ExpiryDate, TestData);
                 }
 
+
+        /*** FIND****/
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the clsSupplier
+            clsSupplier AnSupplier = new clsSupplier();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create test data to use thid method
+            Int32 SupplierID = 3;
+            //invoke the method
+            Found= AnSupplier.Find(SupplierID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestSupplierIDFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //create Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK
+            Boolean OK= true;
+            //create some test data to use with method
+            Int32 SupplierID = 3;
+            //invoke the method
+            Found = AnSupplier.Find(SupplierID);
+            //check the supplierid
+            if (AnSupplier.SupplierID != 3)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestProductionDateFound()
+        {
+            // create an instance of the clsSupplier
+            clsSupplier AnSupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search
+            Boolean Found= false;
+            // create a Boolean variable to record if the data is OK
+            Boolean OK= true;
+            //create some tests data to use with the mwthod
+            Int32 SupplierID = 3;
+            //invoke the method
+            Found = AnSupplier.Find(SupplierID);
+            //check the productiondate property
+            if (AnSupplier.ProductionDate != Convert.ToDateTime("06/12/2002"))
+            {
+                OK= false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public  void TestSupplierNameFound()
+        { 
+            // create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+           //create boolean variable to store the result of the search
+            Boolean Found= false;
+            //create boolean variable to record if data is OK
+
+            Boolean OK= true;
+            //create some tests data to use with the method
+            Int32 SupplierID= 3;
+            //invoke the method
+            Found=AnSupplier.Find(SupplierID);
+            //check the Supplier Name property
+            if (AnSupplier.SupplierName !="Test SupplierName")
+            {
+                OK= false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestShipmentStatusFound()
+        {
+            // create an imnstance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+           // create a boolean variable to store the result of the search
+            Boolean Found= false;
+            //create boolean variable to record if the data is OK
+            Boolean OK= true;
+            //create test fata to use with the method
+            Int32 SupplierID= 3;
+            //invoke the methgod
+            Found =AnSupplier.Find(SupplierID);
+            //check shipmentstatus property
+            if (AnSupplier.Shipmentstatus != true)
+            {
+                OK= false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+
+        }
+        
+
     }
 }
 
