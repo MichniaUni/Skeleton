@@ -1,12 +1,20 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace Testing1
 {
     [TestClass]
     public class tstCustomer
     {
+        /********************** GOOD TEST DATA ******************/
+        string FirstName = "Alina";
+        string LastName = "Ahmed";
+        string Age = "20";
+        string PhoneNumber = "07987654321";
+        string DateJoined = DateTime.Now.ToShortDateString();
+
 
         /********************** INSTANCE OF THE CLASS TEST ******************/
 
@@ -284,7 +292,105 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
 
+        /**************************************** VALID METHOD TEST ***************************************/
 
+        [TestMethod]
+
+        public void ValidMethodOK()
+        {
+            //create an instance of the class customer
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the mehod
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        //---------------------------- painful validation tests start here --------------------//
+
+        //------ATTRIBUTE: FirstName-------//
+        [TestMethod]
+
+        public void FirstName_min_less_one()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "";
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+
+        public void FirstName_min_plus_one()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aa";
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void FirstName_max_less_one()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void FirstName_max()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void FirstName_mid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "";
+            FirstName = FirstName.PadLeft(25, 'a');
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void FirstName_max_plus_one()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "";
+            FirstName = FirstName.PadLeft(51, 'a');
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void FirstName_max_extreme()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string FirstName = "";
+            FirstName = FirstName.PadLeft(1000, 'a');
+            Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+            Assert.AreNotEqual(Error, "");
+        }
 
     }
 }

@@ -153,5 +153,28 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string firstName, string lastName, string age, string phoneNumber, string dateJoined)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the FirstName is blank
+            if (firstName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The first name may not be blank : ";
+            }
+            //if the FirstName is greater than 50 characters
+            if (firstName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The first name must be less than 50 characters : ";
+            }
+            //return any error messages
+            return Error;
+        }
+
+
+
     }
 }
