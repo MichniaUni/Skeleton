@@ -8,8 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 ItemId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        ItemId = Convert.ToInt32(Session["ItemId"]);
+        if(IsPostBack == false)
+        {
+            //if this is not a new record
+            if(ItemId != -1)
+            {
+                //display the current data for the record
+                DisplayStock();
+            }
+        }
+    }
+
+    void DisplayStock()
+    {
+        //create an instance of the address book
+        clsStockCollection StockBook = new clsStockCollection();
+        //find the record to update
+        StockBook.ThisItem.Find(ItemId);
+        //display the data for the record
+        txtItemId.Text = StockBook.ThisItem.ItemId.ToString();
+        txtItemDescription.Text = StockBook.ThisItem.ItemDescription.ToString();
+        txtRestockDate.Text = StockBook.ThisItem.RestockDate.ToString();
+        txtQuantityInStock.Text = StockBook.ThisItem.QuantityInStock.ToString();
+        txtItemPrice.Text = StockBook.ThisItem.ItemPrice.ToString();
+        chkIsActive.Checked = StockBook.ThisItem.IsActive;
 
     }
 
@@ -33,6 +62,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStock.Valid(ItemDescription, RestockDate, QuantityInStock, ItemPrice);
         if(Error == "")
         {
+            //capture the address id
+            AnStock.ItemId = ItemId;
             //capture the Itemdescription
             AnStock.ItemDescription = ItemDescription;
             //capture the RestockDate
@@ -45,10 +76,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.IsActive = chkIsActive.Checked;
             //create a new instance of the address collection
             clsStockCollection StockList = new clsStockCollection();
-            //set the ThisItem property
-            StockList.ThisItem = AnStock;
-            //add the new record
-            StockList.Add();
+
+            //if this ia a new record i.e. ItemId = -1 then add the data
+            if(ItemId == -1)
+            {
+                //set the ThisItem property
+                StockList.ThisItem = AnStock;
+                //add the new record
+                StockList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StockList.ThisItem.Find(ItemId);
+                //set the ThisItem property
+                StockList.ThisItem = AnStock;
+                //update the record
+                StockList.Update();
+            }
+                       
             //redirect back to the list page
             Response.Redirect("StockManagementList.aspx");
         }
