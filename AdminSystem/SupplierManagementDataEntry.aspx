@@ -12,17 +12,17 @@
             Enter Your Data<br />
             <br />
             SupplierID&nbsp;
-            <asp:TextBox ID="txtSupplierID" runat="server" Height="21px" Width="148px"></asp:TextBox>
+            <asp:TextBox ID="txtSupplierID" runat="server" Height="22px" Width="144px"></asp:TextBox>
             <br />
             <br />
             Supplier Name&nbsp;&nbsp;
             <asp:TextBox ID="txtSupplierName" runat="server" Height="22px" Width="144px" OnTextChanged="txtSupplierName_TextChanged"></asp:TextBox>
             <br />
             <br />
-            Production Date&nbsp;&nbsp; <asp:TextBox ID="txtProductionDate" runat="server" Height="23px" Width="128px"></asp:TextBox>
+            Production Date&nbsp;&nbsp; <asp:TextBox ID="txtProductionDate" runat="server" Height="22px" Width="144px"></asp:TextBox>
             <br />
             <br />
-            Expiry Date&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtExpiryDate" runat="server" Height="29px" Width="145px"></asp:TextBox>
+            Expiry Date&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtExpiryDate" runat="server" Height="22px" Width="144px"></asp:TextBox>
             <br />
             <br />
             &nbsp;&nbsp;
@@ -31,11 +31,11 @@
             <br />
             <br />
             Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtQuantity" runat="server" Height="29px" style="margin-bottom: 6px" Width="135px"></asp:TextBox>
+            <asp:TextBox ID="txtQuantity" runat="server" Height="22px" style="margin-bottom: 6px" Width="144px"></asp:TextBox>
             <br />
             <br />
             Price&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtPrice" runat="server" Height="27px" Width="145px"></asp:TextBox>
+            <asp:TextBox ID="txtPrice" runat="server" Height="22px" Width="144px"></asp:TextBox>
             <br />
             <br />
             <br />
