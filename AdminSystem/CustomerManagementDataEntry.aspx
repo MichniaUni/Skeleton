@@ -6,9 +6,12 @@
 <head runat="server">
     <title></title>
 </head>
-<body> &nbsp;<form id="form1" runat="server">
+<body> <form id="form1" runat="server">
+        &nbsp;<p>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 376px; top: 50px; position: absolute" Text="Find" />
+        </p>
         <div>
-            <asp:Label ID="lblCustomerId" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; bottom: 589px" Text="Customer ID" width="124px"></asp:Label>
+            <asp:Label ID="lblCustomerId" runat="server" style="z-index: 1; left: 9px; top: 17px; position: absolute; bottom: 587px" Text="Customer ID" width="124px"></asp:Label>
         </div>
         <asp:TextBox ID="txtCustomerId" runat="server" style="z-index: 1; left: 127px; top: 15px; position: absolute"></asp:TextBox>
         <p>
