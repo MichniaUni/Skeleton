@@ -217,7 +217,7 @@ namespace Testing2
             Assert.AreEqual(0, FilteredStocks.Count);
         }
 
-        /*
+        
         [TestMethod]
         public void ReportByItemDescriptionTestDataFound()
         {
@@ -248,6 +248,6 @@ namespace Testing2
             //test to see that there are no records
             Assert.IsTrue(OK);
         }
-        */
+        
     }
 }
