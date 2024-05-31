@@ -170,7 +170,7 @@ namespace Testing2
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.ItemId = 1;
-            TestItem.ItemDescription = "RedDrones";
+            TestItem.ItemDescription = "BlueBlackDrones";
             TestItem.RestockDate = DateTime.Now;
             TestItem.QuantityInStock = 10;
             TestItem.ItemPrice = 152.2m;
@@ -226,7 +226,7 @@ namespace Testing2
             //variable to store the outcome
             Boolean OK = true;
             //applay the Item Description that doesn't exist
-            FilteredStocks.ReportByItemDescription("xxxxxx");
+            FilteredStocks.ReportByItemDescription("TestDrones");
             //check that the coprect number of records are found
             if(FilteredStocks.Count == 2)
             {
