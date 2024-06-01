@@ -130,4 +130,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsActive.Checked = AnStock.IsActive;
         }
     }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
