@@ -154,10 +154,16 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string firstName, string lastName, string age, string phoneNumber, string dateJoined)
+        public string Valid(string firstName, string lastName, string age, string phoneNumber, string dateJoined) //Note: use 'firstName', NOT 'FirstName' 
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //create a temporary variable to store the data values
+            Int32 AgeTemp;
+            //create a temporary variable to store the data values
+            Int64 PhoneTemp;
             //if the FirstName is blank
             if (firstName.Length == 0)
             {
@@ -170,11 +176,89 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The first name must be less than 50 characters : ";
             }
+            //if the LastName is blank
+            if (lastName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The last name may not be blank : ";
+            }
+            //if the LastName is greater than 50 characters
+            if (lastName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The last name must be less than 50 characters : ";
+            }
+            //create an instance of DateTime to compare with DateTemp in the if statement
+            DateTime DateCompare = DateTime.Now.Date;
+
+            try
+            {
+                //copy the dateJoined value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateJoined);
+
+                if (DateTemp < DateCompare) //compare dateJoined with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's daye
+                if (DateTemp > DateCompare)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            try
+            {
+                //copy the Age values to the AgeTemp variable
+                AgeTemp = Convert.ToInt32(age);
+                //check if the value is less than 1 - this covers Age_Extreme_Min, Age_Min_Less_One and Age_Min
+                if (AgeTemp < 1)
+                {
+                    Error = Error + "The age connot be less than 1 : ";
+                }
+                if (AgeTemp > 150) {
+                    Error = Error + "The age cannot be greater than 150 : ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The age was not valid : ";
+            }
+
+            try
+            {
+                //copy the PhoneNumber values to the PhoneTemp variable
+                PhoneTemp = Convert.ToInt64(phoneNumber);
+                //check if the value is less than 7000000000 - this covers PhoneNumber_Extreme_Min and PhoneNumber_Min_Less_One
+                if (PhoneTemp < 7000000000)
+                {
+                    Error = Error + "The phone number connot be less than 7000000000 (you have not entered all the digits of your phone number) : ";
+                }
+                if (PhoneTemp > 8000000000)
+                {
+                    Error = Error + "The phone number cannot be greater than 8000000000 (you have entered an extra digit other than your phone number) : ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The phone number was not valid : ";
+            }
+
+
             //return any error messages
             return Error;
         }
-
-
-
     }
 }
