@@ -14,53 +14,51 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
-    {   
-        //---------------------------create a new instance of clsCustomer
+    {
+        //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-
-
-
-
-
         //capture the FirstName
-        ACustomer.FirstName = txtFirstName.Text;
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
+        string FirstName = txtFirstName.Text;
         //capture the LastName
-        ACustomer.LastName = txtLastName.Text;
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
+        string LastName = txtLastName.Text;
         //capture the Age
-        ACustomer.Age = Convert.ToInt32(txtAge.Text);
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
+        string Age = txtAge.Text;
         //capture the PhoneNumber
-        ACustomer.PhoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
+        string PhoneNumber = txtPhoneNumber.Text;
         //capture the DateJoined
-        ACustomer.DateJoined = Convert.ToDateTime(DateTime.Now);
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
-        //capture the isActive
-        ACustomer.isActive = chkisActive.Checked;
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
+        string DateJoined = txtDateJoined.Text;
         //capture the CustomerId
-        ACustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        //store the Customer in the session object
-        Session["ACustomer"] = ACustomer;
-
-
-        //-----------------------------navigate to the view page
-        Response.Redirect("CustomerManagementViewer.aspx");
+        string CustomerId = txtCustomerId.Text;
+        //capture the isActive
+        string isActive = chkisActive.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
+        if (Error == "")
+        {
+            //capture the FirstName
+            ACustomer.FirstName = FirstName;
+            //capture the LastName
+            ACustomer.LastName = LastName;
+            //capture the DateJoined
+            ACustomer.DateJoined = Convert.ToDateTime(DateJoined);
+            //capture the Age
+            ACustomer.Age = Convert.ToInt32(Age);
+            //capture the PhoneNmber
+            ACustomer.PhoneNumber = Convert.ToInt64(PhoneNumber);
+            //store the customer in the session object
+            Session["ACustomer"] = ACustomer;
+            //redirect back to the view page
+            Response.Redirect("CustomerManagementViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
+
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
