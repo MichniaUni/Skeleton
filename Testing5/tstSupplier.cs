@@ -253,6 +253,27 @@ namespace Testing5
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
+        public void TestPriceFound()
+        { 
+            //create an instanc of cls suplier
+            clsSupplier AnSupplier = new clsSupplier();
+            //create a Boolean variable to store the result of the search 
+            Boolean Found = false;
+            // create a Boolean variable to record if the data is OK
+            Boolean OK = true;
+            //create some tests data to use with the method
+            Int32 SupplierID = 3;
+            //invoke the method
+            Found = AnSupplier.Find(SupplierID);
+            //check the price property
+            if (AnSupplier.Price!=120.00m)
+            {
+                OK= false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+                    }
 
     }
 }
