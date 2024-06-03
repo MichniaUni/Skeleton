@@ -13,7 +13,7 @@
         <asp:Label ID="lblItemPrice" runat="server" height="25px" style="z-index: 1; left: 11px; top: 200px; position: absolute" Text="ItemPrice" width="150px"></asp:Label>
         <p>
             <asp:TextBox ID="txtItemId" runat="server" height="25px" style="z-index: 1; left: 202px; top: 33px; position: absolute; width: 319px"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 556px; top: 35px; position: absolute; width: 117px" Text="Find" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 556px; top: 35px; position: absolute; width: 117px" Text="Find" BackColor="#0066FF" BorderColor="#0066FF" BorderStyle="Solid" ForeColor="White" />
         </p>
         <p>
             <asp:TextBox ID="txtItemDescription" runat="server" height="25px" style="z-index: 1; left: 202px; top: 76px; position: absolute; width: 319px"></asp:TextBox>
@@ -37,10 +37,10 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 123px; top: 373px; position: absolute; width: 80px" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 123px; top: 373px; position: absolute; width: 80px" Text="Cancel" OnClick="btnCancel_Click" BackColor="#0066FF" BorderColor="#0066FF" BorderStyle="Solid" ForeColor="White" />
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 11px; top: 319px; position: absolute" ForeColor="#CC0000"></asp:Label>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 373px; position: absolute; width: 80px; right: 776px;" Text="OK" />
-            <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 238px; top: 373px; position: absolute" Text="Return To Main Menu" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 373px; position: absolute; width: 80px; right: 776px;" Text="OK" BackColor="#0066FF" BorderColor="#0066FF" BorderStyle="Solid" ForeColor="White" />
+            <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 238px; top: 373px; position: absolute" Text="Return To Main Menu" BackColor="#0066FF" BorderColor="#0066FF" BorderStyle="Solid" ForeColor="White" />
         </p>
         <p>
             &nbsp;</p>
