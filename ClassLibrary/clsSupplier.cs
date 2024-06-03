@@ -99,7 +99,7 @@ namespace ClassLibrary
             }
         }
         //private data member for Price Poperty
-        private Int32 mPrice;
+        private Decimal mPrice;
 
         //Price oublic poperty
         public decimal Price {

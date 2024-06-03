@@ -136,4 +136,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //redirect to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("StockManagementList.aspx");
+    }
 }
