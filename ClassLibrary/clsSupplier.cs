@@ -131,7 +131,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int supplierID)
+        public bool Find(int SupplierID)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -148,7 +148,8 @@ namespace ClassLibrary
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mShipmentstatus = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipmentstatus"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mExpiryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ExiryDate"]);
+                mExpiryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ExpiryDate"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 //return that everything worked on
                 return true;
             }
