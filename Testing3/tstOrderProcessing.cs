@@ -4,12 +4,24 @@ using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO.Pipes;
+using System.Runtime.Remoting.Messaging;
 
 namespace Testing3
 {
+
+
     [TestClass]
     public class tstOrderProcessing
+
+
     {
+        //good test data
+        //create some test data to pass to the method
+        String OrderDate = DateTime.Now.ToShortDateString();
+        String OrderStatus = "pending";
+        String PaymentMethod = "cash";
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -197,6 +209,348 @@ namespace Testing3
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instnace of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateExtremeMin()
+        {
+            //create an instance of the class we want to create 
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            String OrderDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date varaible to string variable
+            String OrderDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //convert the date varaible to string variable
+            String OrderDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date varaible to string variable
+            String OrderDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date varaible to string variable
+            String OrderDate = TestDate.ToString();
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string variable to store any error message
+            String Error = "";
+            //set the OrderDate to a non date value
+            String OrderDate = "this is not a date!";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+        }
+        [TestMethod]
+        public void OrderStatusMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should fail
+            String OrderStatus = "";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderStatusMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String OrderStatus = "a";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderStatusMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String OrderStatus = "aa";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderStatusMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(49, 'a');
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderStatusMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(50, 'a');
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderStatusMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should fail
+            String OrderStatus = "";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderStatusMid()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String OrderStatus = "";
+            OrderStatus = OrderStatus.PadRight(25, 'a');
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should fail
+            String PaymentMethod = "";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String PaymentMethod = "a";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String PaymentMethod = "aa";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String PaymentMethod = "";
+            PaymentMethod = PaymentMethod.PadRight(49, 'a');
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String PaymentMethod = "";
+            PaymentMethod = PaymentMethod.PadRight(50, 'a');
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should fail
+            String PaymentMethod = "";
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void PaymentMethodMid()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
+            //string varaible to store any error message
+            String Error = "";
+            //this should pass
+            String PaymentMethod = "";
+            PaymentMethod = PaymentMethod.PadRight(25, 'a');
+            //invoke the method
+            Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
         }
     }
 }
