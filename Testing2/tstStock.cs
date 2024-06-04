@@ -9,6 +9,7 @@ namespace Testing2
     public class tstStock
     {
         /******************GOOD TEST DATA******************/
+        //good test data
         string ItemDescription = "RedDrones";
         string RestockDate = DateTime.Now.ToShortDateString();
         string QuantityInStock = "21";
