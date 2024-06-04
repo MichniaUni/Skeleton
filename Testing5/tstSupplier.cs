@@ -47,7 +47,7 @@ namespace Testing5
         {  //create an instance of the class we want
            clsSupplier AnSupplier = new clsSupplier();
             //create test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 3;
             //assign the data to the proverty
             AnSupplier.SupplierID= TestData;
             //test to see that two values are same
@@ -59,7 +59,7 @@ namespace Testing5
             //CREATE AN INSTANCE OF THE CLASS WE WANT
             clsSupplier AnSupplier = new clsSupplier();
             //create test data to assign to the property
-            string TestData = "Some Supplier";
+            string TestData = "Test";
             //assign the data to property
             AnSupplier.SupplierName = TestData;
             //test to see that two values are same
@@ -72,7 +72,7 @@ namespace Testing5
             //create an instance of the class you want
             clsSupplier AnSupplier = new clsSupplier();
             //create test data to assign the property
-            Int32 TestData = 1;
+            Int32 TestData = 10;
             //assign the data to the property
             AnSupplier.Quantity= TestData;
             //test to see the two values are same
@@ -84,7 +84,7 @@ namespace Testing5
             //create an instance of the class you want
             clsSupplier AnSupplier = new clsSupplier();
             //create test data to assign the property
-            decimal TestData= 1.00M;
+            decimal TestData= 120.00M;
             //assign the data to the property
             AnSupplier.Price = TestData;
             //test to see the two values are same
@@ -180,7 +180,7 @@ namespace Testing5
             //invoke the method
             Found=AnSupplier.Find(SupplierID);
             //check the Supplier Name property
-            if (AnSupplier.SupplierName !="Test SupplierName")
+            if (AnSupplier.SupplierName !="Test")
             {
                 OK= false;
             }
@@ -267,7 +267,7 @@ namespace Testing5
             //invoke the method
             Found = AnSupplier.Find(SupplierID);
             //check the price property
-            if (AnSupplier.Price!=120.00m)
+            if (AnSupplier.Price!= 120.00m)
             {
                 OK= false;
             }
