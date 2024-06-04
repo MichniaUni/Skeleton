@@ -113,21 +113,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnStock = new clsStock();
         //creat a variable to store the primary key
         Int32 ItemId;
-        //create a variable to store the result of find operation
-        Boolean Found = false;
-        //get the primary key entered by the user
-        ItemId = Convert.ToInt32(txtItemId.Text);
-        //find the record
-        Found = AnStock.Find(ItemId);
-        //if found
-        if(Found == true)
+        //try to parse the item entered by the user
+        if(Int32.TryParse(txtItemId.Text, out ItemId))
         {
-            //display the values of the propertise in the form
-            txtItemDescription.Text = AnStock.ItemDescription;
-            txtRestockDate.Text = AnStock.RestockDate.ToString();
-            txtQuantityInStock.Text = AnStock.QuantityInStock.ToString();
-            txtItemPrice.Text = AnStock.ItemPrice.ToString();
-            chkIsActive.Checked = AnStock.IsActive;
+            //if parsing is suessful, attempt to found the reordc
+            if (AnStock.Find(ItemId))
+            {
+                //display the values of the propertise in the form
+                txtItemDescription.Text = AnStock.ItemDescription;
+                txtRestockDate.Text = AnStock.RestockDate.ToString();
+                txtQuantityInStock.Text = AnStock.QuantityInStock.ToString();
+                txtItemPrice.Text = AnStock.ItemPrice.ToString();
+                chkIsActive.Checked = AnStock.IsActive;
+                //hide the error message if preiouvsly show
+                lblError.Visible = false;
+            }
+            else
+            {
+                //display the error message if ItemId is not found
+                lblError.Text = "The ItemId is not valid or not found. Please try again. ";
+                //show the error message
+                lblError.Visible = true;
+            }
+        }
+        else
+        {
+            //display the error message if ItemId is not a valid integer
+            lblError.Text = "The input for ItemId is not a valid number. Please try again. ";
+            //show the error message
+            lblError.Visible = true;
         }
     }
 
