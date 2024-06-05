@@ -14,18 +14,16 @@ public partial class _1Viewer : System.Web.UI.Page
         clsSupplier AnSupplier = new clsSupplier();
         //get the data from yhe session object
         AnSupplier = (clsSupplier)Session["AnSupplier"];
-        //display supplier ID
-        Response.Write(AnSupplier.SupplierID);
         //display Supplier name
-        Response.Write(AnSupplier.SupplierName);
+        Response.Write(AnSupplier.SupplierName + "<br>");
         //display Production Date
-        Response.Write(AnSupplier.ProductionDate);
+        Response.Write(AnSupplier.ProductionDate + "<br>");
         //display ExpiryDate
-        Response.Write(AnSupplier.ExpiryDate);
+        Response.Write(AnSupplier.ExpiryDate + "<br>");
         //display Quantity
-        Response.Write(AnSupplier.Quantity);
+        Response.Write(AnSupplier.Quantity + "<br>");
         //display price
-        Response.Write(AnSupplier.Price);
+        Response.Write(AnSupplier.Price + "<br>");
 
 
     }
