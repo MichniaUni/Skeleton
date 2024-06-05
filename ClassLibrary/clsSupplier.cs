@@ -210,7 +210,7 @@ namespace ClassLibrary
             catch
             {
                 //record the error 
-                Error = Error + "The date was not a valid date;";
+                Error = Error + "The production date was not a valid date;";
             }
 
             
@@ -233,7 +233,7 @@ namespace ClassLibrary
             catch
             {
                 //record the error 
-                Error = Error + " The date was not a valid date:";
+                Error = Error + " The expiry date was not a valid date:";
             }
 
 

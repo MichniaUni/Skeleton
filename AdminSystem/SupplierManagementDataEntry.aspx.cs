@@ -15,27 +15,51 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnadd_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsSupplier
+       //create a new instance of clsSupplier
         clsSupplier AnSupplier = new clsSupplier();
-        //capture Supplier name
-        AnSupplier.SupplierName = txtSupplierName.Text;
-        //capture SupplierID
-        AnSupplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
-        //Capture ProductionDate
-        AnSupplier.ProductionDate= Convert.ToDateTime(txtProductionDate.Text);
-        //Capture Expiry date
-        AnSupplier.ExpiryDate= Convert.ToDateTime(txtExpiryDate.Text);
+        //capture supplier name
+        string SupplierName= txtSupplierName.Text;
+        //capture Production date
+        string ProductionDate =txtProductionDate.Text;
+        //capture Expiry date
+        string ExpiryDate=txtExpiryDate.Text;
         //capture quantity
-        AnSupplier.Quantity = Convert.ToInt32(txtQuantity.Text);
+        string Quantity = txtQuantity.Text;
         //capture price
-        AnSupplier.Price = Convert.ToInt32(txtPrice.Text);
-        //capture Shipmentstatus
-        AnSupplier.Shipmentstatus= chkShipped.Checked;
+        string Price = txtPrice.Text;
+        //capture shipmentsatatus
+        string Shipmentstatus= chkShipped.Text;
+        // variable to store any error message
+        string Error = "";
+        //validate the data
+        Error = AnSupplier.Valid(SupplierName, ProductionDate, ExpiryDate, Quantity, Price);
+        if (Error == "")
+        {
+            
+            //capture Supplier name
+            AnSupplier.SupplierName = SupplierName;
+            
+            //Capture ProductionDate
+            AnSupplier.ProductionDate = Convert.ToDateTime(ProductionDate);
+            //Capture Expiry date
+            AnSupplier.ExpiryDate = Convert.ToDateTime(ExpiryDate);
+            //capture quantity
+            AnSupplier.Quantity = Convert.ToInt32(Quantity);
+            //capture price
+            AnSupplier.Price = Convert.ToInt32(Price);
+            
 
-        //store the supplier in the session object
-        Session["AnSupplier"] = AnSupplier;
-        //redirect to view page
-        Response.Redirect("SupplierManagementViewer.aspx");
+            //store the supplier in the session object
+            Session["AnSupplier"] = AnSupplier;
+            //redirect to view page
+            Response.Redirect("SupplierManagementViewer.aspx");
+        }
+
+        else
+        {
+            // display the error message
+            lblError.Text= Error;
+        }
     }
 
     protected void chkProcessing_CheckedChanged(object sender, EventArgs e)
