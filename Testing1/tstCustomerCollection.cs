@@ -56,7 +56,7 @@ namespace Testing1
             TestCustomer.isActive = true;
             TestCustomer.CustomerId = 27;
             TestCustomer.Age = 29;
-            TestCustomer.PhoneNumber = 7897564987;
+            TestCustomer.PhoneNumber = 789756487;
             TestCustomer.FirstName = "Jake";
             TestCustomer.LastName = "Black";
             TestCustomer.DateJoined = DateTime.Now;
@@ -82,7 +82,7 @@ namespace Testing1
             TestItem.isActive = true;
             TestItem.CustomerId = 27;
             TestItem.Age = 29;
-            TestItem.PhoneNumber = 7897564987;
+            TestItem.PhoneNumber = 78975647;
             TestItem.FirstName = "Jake";
             TestItem.LastName = "Black";
             TestItem.DateJoined = DateTime.Now;
@@ -93,6 +93,79 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
+
+        [TestMethod]
+
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerId = 27;
+            TestItem.Age = 29;
+            TestItem.PhoneNumber = 789756498;
+            TestItem.isActive = true;
+            TestItem.FirstName = "Jake";
+            TestItem.LastName = "Black";
+            TestItem.DateJoined = DateTime.Now;
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerId = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
+
+        [TestMethod]
+
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerId = 27;
+            TestItem.Age = 29;
+            TestItem.PhoneNumber = 789756498;
+            TestItem.isActive = true;
+            TestItem.FirstName = "Jake";
+            TestItem.LastName = "Black";
+            TestItem.DateJoined = DateTime.Now;
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerId = PrimaryKey;
+            //modify the test record
+            TestItem.CustomerId = 72;
+            TestItem.Age = 92;
+            TestItem.PhoneNumber = 784567772;
+            TestItem.isActive = false;
+            TestItem.FirstName = "Oliver";
+            TestItem.LastName = "White";
+            //set the record based on the new test data
+            AllCustomers.ThisCustomer = TestItem;
+            //update the record
+            AllCustomers.Update();
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see if ThisCustomer matches the test data
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
 
 
 

@@ -240,11 +240,11 @@ namespace ClassLibrary
                 //copy the PhoneNumber values to the PhoneTemp variable
                 PhoneTemp = Convert.ToInt64(phoneNumber);
                 //check if the value is less than 7000000000 - this covers PhoneNumber_Extreme_Min and PhoneNumber_Min_Less_One
-                if (PhoneTemp < 7000000000)
+                if (PhoneTemp < 700000000)
                 {
                     Error = Error + "The phone number connot be less than 7000000000 (you have not entered all the digits of your phone number) : ";
                 }
-                if (PhoneTemp > 8000000000)
+                if (PhoneTemp > 800000000)
                 {
                     Error = Error + "The phone number cannot be greater than 8000000000 (you have entered an extra digit other than your phone number) : ";
                 }
