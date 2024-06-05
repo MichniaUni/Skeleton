@@ -5,8 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            position: absolute;
+            top: 347px;
+            left: 182px;
+            z-index: 1;
+        }
+    </style>
 </head>
-<body>
+<body style="margin-bottom: 19px">
     <form id="form1" runat="server">
         <div>
             <br />
@@ -18,7 +26,7 @@
             <asp:Label ID="lblstreet" runat="server" style="z-index: 1; left: 11px; top: 144px; position: absolute" Text="Street" width="83px"></asp:Label>
             <asp:Label ID="lblordernum" runat="server" style="z-index: 1; left: 11px; top: 109px; position: absolute; width: 101px;" Text="Order Number"></asp:Label>
             <asp:Label ID="lblcity" runat="server" style="z-index: 1; left: 12px; top: 180px; position: absolute" Text="City" width="83px"></asp:Label>
-            <asp:Label ID="lblerror" runat="server" style="z-index: 1; left: 13px; top: 311px; position: absolute"></asp:Label>
+            <asp:Label ID="lblerror" runat="server" style="z-index: 1; left: 17px; top: 304px; position: absolute"></asp:Label>
             <br />
             <asp:TextBox ID="txtordernum" runat="server" style="z-index: 1; left: 175px; top: 109px; position: absolute"></asp:TextBox>
             <asp:TextBox ID="txtdeliverydate" runat="server" style="z-index: 1; left: 173px; top: 252px; position: absolute"></asp:TextBox>
@@ -31,15 +39,22 @@
             <br />
             <br />
             <br />
-            <asp:Button ID="btncancel" runat="server" style="z-index: 1; left: 286px; top: 341px; position: absolute" Text="Cancel" />
             <br />
             <br />
             <br />
-            <asp:Button ID="btnok" runat="server" style="z-index: 1; left: 89px; top: 344px; position: absolute; width: 59px" Text="OK" OnClick="btnok_Click" />
+            <asp:Button ID="btnok" runat="server" style="z-index: 1; left: 60px; top: 347px; position: absolute; width: 59px" Text="OK" OnClick="btnok_Click" />
             <br />
             <br />
             <br />
             <asp:CheckBox ID="chkisdeliveryexpress" runat="server" style="z-index: 1; left: 107px; top: 289px; position: absolute" Text="Express Delivery" />
+            <br />
+            &nbsp;
+            <br />
+            <asp:Button ID="btnfind" runat="server" CssClass="auto-style1" OnClick="btnfind_Click" Text="Find" />
+            <br />
+            &nbsp;&nbsp;<br />
+            <asp:Button ID="btncancel" runat="server" style="z-index: 1; left: 210px; top: 414px; position: absolute; width: 92px;" Text="Cancel" OnClick="btncancel_Click" />
+            <br />
             <br />
             <br />
             <br />

@@ -35,4 +35,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to viewer page
         Response.Redirect("ShipmentManagementViewer.aspx");
     }
+
+   
+
+    protected void btncancel_Click(object sender, EventArgs e)
+    {
+
+    }
+
+
+
+    protected void btnfind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address clas
+        clsShipment AnShipment = new clsShipment();
+        //create a variable to store the primary key
+        Int32 shipmentid;
+        //create a variable to stroe the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        shipmentid = Convert.ToInt32(txtshipmentid.Text);
+        //find the record
+        Found = AnShipment.Find(shipmentid);
+        //if found
+        if (Found == true)
+        {
+            //display thr values of the properties in the form
+            txtordernum.Text = AnShipment.ordernum.ToString();
+            txtstreet.Text = AnShipment.street;
+            txtcity.Text = AnShipment.city;
+            txtpostcode.Text = AnShipment.postcode;
+            txtdeliverydate.Text = AnShipment.deliverydate.ToString();
+            chkisdeliveryexpress.Checked = AnShipment.isDeliveryExpress;
+        }
+    }
 }
