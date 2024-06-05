@@ -43,20 +43,20 @@ namespace ClassLibrary
         }
 
         //private data member for the date added property
-        private DateTime mDateAdded;
+        private DateTime mOrderDate;
         //date added public property
-        public DateTime DateAdded
+        public DateTime OrderDate
         {
             get
             {
                 //this line of code sends data out of the property
-                return mDateAdded;
+                return mOrderDate;
             }
 
             set
             {
                 //this line of code allows data into the property
-                mDateAdded = value;
+                mOrderDate = value;
             }
         }
 
@@ -109,7 +109,7 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
                 mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
                 mPaymentMethod = Convert.ToString(DB.DataTable.Rows[0]["PaymentMethod"]);
                 mIsCancelled = Convert.ToBoolean(DB.DataTable.Rows[0]["IsCancelled"]);
