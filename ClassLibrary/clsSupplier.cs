@@ -166,6 +166,13 @@ namespace ClassLibrary
         {
             // create a string variable to store error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //create a temporary variable to store the data values
+            Int32 ValueTemp;
+            //create a temporary variable to store the date values
+            Decimal PriceTemp;
+
             //is suppliuer name blank
             if (supplierName.Length == 0)
             {
@@ -180,7 +187,92 @@ namespace ClassLibrary
                 Error = Error + "The Supplier Name must be less than 50 characters:";
             }
 
+            
+            try
+            {
 
+                //copy the ProductionDate value to DateTemp variable
+                DateTemp = Convert.ToDateTime(productionDate);
+                //check to see if the date is less than todays date
+
+                if (DateTemp < DateTime.Now.Date) //compare Productiondate with date
+
+                {//record the error
+                    Error = Error + "The production date cannot be in the past;";
+                }
+                // check to see if the date is greater than today's date
+                if (DateTemp >DateTime.Now.Date)
+                {
+                    // record error
+                    Error = Error + "The production date cannot be in the future:";
+                }
+            }
+            catch
+            {
+                //record the error 
+                Error = Error + "The date was not a valid date;";
+            }
+
+            
+            try
+            {
+                //copy the expiry date value to the date temp variable
+                DateTemp = Convert.ToDateTime(expiryDate);
+                // check to see if the date is less thane today's date
+                if (DateTemp <DateTime.Now.Date)
+                {
+                    Error = Error + "The expiry date cannot be in the past:";
+                }
+                // check to see if the date is greater than doday's date
+                if (DateTemp > DateTime.Now.Date.AddYears(2))
+                {
+                    //record the error
+                    Error = Error + "The expiry date cannot be more than 2 years:";
+                }
+            }
+            catch
+            {
+                //record the error 
+                Error = Error + " The date was not a valid date:";
+            }
+
+
+            try
+            {
+                //copy quantity value to the value to valuetemp variable
+                ValueTemp = Convert.ToInt32(quantity);
+                //check if the value is less than 0
+                if (ValueTemp < 0)
+                {
+                    //record the error
+                    Error = Error + "The quantity value cannot be les than 0:";
+
+                }
+            }
+            catch
+            {
+                //record the erroe
+                Error = Error + "The value was not a valid quantity value:";
+            }
+            try
+            {
+                //copy the price values to the pricetemp variable
+                PriceTemp = Convert.ToDecimal(price);
+                // check if the value is less than zero
+                if (PriceTemp < 0.00m)
+                {
+                    //record the error
+                    Error = Error + "The value of price cannot be leaa than zero:";
+
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The price is not a valid value for price";
+            }
+
+            //return any error message
             return Error;
         }
     }
