@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tstOrderProcessing.cs" />
+    <Compile Include="tstOrderProcessingCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
