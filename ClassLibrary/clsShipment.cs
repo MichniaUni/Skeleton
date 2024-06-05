@@ -157,16 +157,34 @@ namespace ClassLibrary
 
         public bool Find(int shipmentid)
         {
-            //set the private data members to the test data value
-            mshipmentid = 21;
-            mordernum = 21;
-            mdeliverydate = Convert.ToDateTime("05/06/2024");
-            mstreet = "abcd";
-            mcity = "bcd";
-            mpostcode = "abcd";
-            misDeliveryExpress = true;
-            //always return true
-            return true;
+            //create an instance  of data conncetion
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the shipmentid to search for
+            DB.AddParameter("@shipmentid", shipmentid);
+            //execute the stored procedure
+            DB.Execute("sproc_tblShipment_FilterByshipmentid");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+
+
+                //copy the data from data base to the private data members
+                mshipmentid = Convert.ToInt32(DB.DataTable.Rows[0]["shipmentid"]);
+                mordernum = Convert.ToInt32(DB.DataTable.Rows[0]["ordernum"]);
+                mdeliverydate = Convert.ToDateTime(DB.DataTable.Rows[0]["deliverydate"]);
+                mstreet = Convert.ToString(DB.DataTable.Rows[0]["street"]);
+                mcity = Convert.ToString(DB.DataTable.Rows[0]["city"]);
+                mpostcode = Convert.ToString(DB.DataTable.Rows[0]["postcode"]);
+                misDeliveryExpress = Convert.ToBoolean(DB.DataTable.Rows[0]["isDeliveryExpress"]);
+                //always that everything worked ok
+                return true;
+            }
+            //if no record found
+            else
+            {
+                //false means problem 
+                return false;
+            }
         }
 
     }

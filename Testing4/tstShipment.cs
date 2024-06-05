@@ -120,7 +120,7 @@ namespace Testing4
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;  
             //create some test data to use with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //test to see if the result is true
@@ -137,11 +137,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
-            if (AnShipment.shipmentid !=21)
+            if (AnShipment.shipmentid != 4)
             {
                 OK = false;
             }
@@ -160,7 +160,7 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
@@ -183,11 +183,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
-            if (AnShipment.ordernum != 21)
+            if (AnShipment.ordernum != 4)
             {
                 OK = false;
             }
@@ -206,11 +206,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
-            if (AnShipment.street != "abcd")
+            if (AnShipment.street != "25 abc")
             {
                 OK = false;
             }
@@ -229,11 +229,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
-            if (AnShipment.city != "bcd")
+            if (AnShipment.city != "Leicester")
             {
                 OK = false;
             }
@@ -252,11 +252,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
-            if (AnShipment.postcode !="abcd")
+            if (AnShipment.postcode != "LE2 7FZ")
             {
                 OK = false;
             }
@@ -274,7 +274,7 @@ namespace Testing4
             //create a Boolean variable to record if the data is ok (assume it is))
             Boolean OK = true;
             //create some test data with the method
-            Int32 shipmentid = 21;
+            Int32 shipmentid = 4;
             //invoke the method
             Found = AnShipment.Find(shipmentid);
             //check the shipment id
