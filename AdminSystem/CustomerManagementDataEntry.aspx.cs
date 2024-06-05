@@ -7,11 +7,41 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
-{
+{   
+    //variable to store the primary key with page level scope
+    Int32 CustomerId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the customer to be processed
+        CustomerId = Convert.ToInt32(Session["CustomerId"]);
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (CustomerId != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
     }
+
+    void DisplayCustomer()
+    {
+        //create an instance of the customer
+        clsCustomerCollection customerCollection = new clsCustomerCollection();
+        //find the record to update
+        customerCollection.ThisCustomer.Find(CustomerId);
+        //display the data for the record
+        txtCustomerId.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        txtFirstName.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        txtLastName.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        txtAge.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        txtDateJoined.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        txtPhoneNumber.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        chkisActive.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+    }
+
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -27,8 +57,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string PhoneNumber = txtPhoneNumber.Text;
         //capture the DateJoined
         string DateJoined = txtDateJoined.Text;
-        //capture the CustomerId
-        string CustomerId = txtCustomerId.Text;
         //capture the isActive
         string isActive = chkisActive.Text;
         //variable to store any error messages
@@ -37,6 +65,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
         if (Error == "")
         {
+            //capture CustomerId 
+            ACustomer.CustomerId = Convert.ToInt32(CustomerId);
             //capture the FirstName
             ACustomer.FirstName = FirstName;
             //capture the LastName
@@ -47,10 +77,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.Age = Convert.ToInt32(Age);
             //capture the PhoneNmber
             ACustomer.PhoneNumber = Convert.ToInt64(PhoneNumber);
-            //store the customer in the session object
-            Session["ACustomer"] = ACustomer;
-            //redirect back to the view page
-            Response.Redirect("CustomerManagementViewer.aspx");
+            //capture active
+            ACustomer.isActive = chkisActive.Checked;
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            //if this is a new record i.e. CustomerId = -1 then add the data
+            if (CustomerId == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find th record to update
+                CustomerList.ThisCustomer.Find(CustomerId);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                //update the record
+                CustomerList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("CustomerManagementList.aspx");
         }
         else
         {

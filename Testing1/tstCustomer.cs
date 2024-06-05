@@ -13,7 +13,7 @@ namespace Testing1
         string FirstName = "Alina";
         string LastName = "Ahmed";
         string Age = "20";
-        string PhoneNumber = "07987654321";
+        string PhoneNumber = "0787654321";
         string DateJoined = DateTime.Now.ToShortDateString();
 
 
@@ -741,7 +741,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             //create some test data to pass to the method
-            string PhoneNumber = "6999999999";
+            string PhoneNumber = "699999999";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -753,7 +753,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             //create some test data to pass to the method
-            string PhoneNumber = "7000000000";
+            string PhoneNumber = "700000000";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -765,7 +765,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             //create some test data to pass to the method
-            string PhoneNumber = "7000000001";
+            string PhoneNumber = "700000001";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -777,7 +777,7 @@ namespace Testing1
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string PhoneNumber = "7999999999";
+            string PhoneNumber = "799999999";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             Assert.AreEqual(Error, "");
         }
@@ -788,7 +788,7 @@ namespace Testing1
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string PhoneNumber = "8000000000";
+            string PhoneNumber = "800000000";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             Assert.AreEqual(Error, "");
         }
@@ -799,7 +799,7 @@ namespace Testing1
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string PhoneNumber = "8000000001";
+            string PhoneNumber = "800000001";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             Assert.AreNotEqual(Error, "");
         }
@@ -810,7 +810,7 @@ namespace Testing1
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string PhoneNumber = "7500000000";
+            string PhoneNumber = "750000000";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             Assert.AreEqual(Error, "");
         }
@@ -821,7 +821,7 @@ namespace Testing1
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string PhoneNumber = "9000000000000";
+            string PhoneNumber = "900000000000";
             Error = ACustomer.Valid(FirstName, LastName, Age, PhoneNumber, DateJoined);
             Assert.AreNotEqual(Error, "");
         }
