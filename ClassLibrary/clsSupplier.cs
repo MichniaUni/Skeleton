@@ -4,6 +4,7 @@ namespace ClassLibrary
 {
     public class clsSupplier
     {
+       
 
         //private data member for Shipmentstatus property
         private Boolean mShipmentstatus;
@@ -159,6 +160,28 @@ namespace ClassLibrary
                 //return false indicating there is problem
                 return false;
             }
+        }
+
+        public string Valid(string supplierName, string productionDate, string expiryDate, string quantity, string price)
+        {
+            // create a string variable to store error
+            String Error = "";
+            //is suppliuer name blank
+            if (supplierName.Length == 0)
+            {
+                //record error
+                Error = Error + "The Supplier Name cannot be blank:";
+
+            }
+            //if supplier name is too long
+            if(supplierName.Length >50)
+            {
+                //record error
+                Error = Error + "The Supplier Name must be less than 50 characters:";
+            }
+
+
+            return Error;
         }
     }
 }

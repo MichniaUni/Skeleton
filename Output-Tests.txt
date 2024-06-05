@@ -1,0 +1,56 @@
+﻿Log level is set to Informational (Default).
+Connected to test environment '< Local Windows Environment >'
+Test data store opened in 0.007 sec.
+Building Test Projects
+Aborting test run due to build failures. Please see the build output for more details.
+========== Starting test discovery ==========
+No test is available in H:\Desktop\Team skeletom10\ClassLibrary\bin\Debug\ClassLibrary.dll. Make sure that test discoverer & executors are registered and platform & framework version settings are appropriate and try again.
+========== Test discovery finished: 0 Tests found in 6.8 sec ==========
+Building Test Projects
+Aborting test run due to build failures. Please see the build output for more details.
+Building Test Projects
+Starting test discovery for requested test run
+========== Starting test discovery ==========
+========== Test discovery finished: 16 Tests found in 2.6 sec ==========
+Executing test method: Testing5.tstSupplier.TestPriceFound
+========== Starting test run ==========
+========== Test run finished: 1 Tests (0 Passed, 1 Failed, 0 Skipped) run in 5.6 sec ==========
+Starting test discovery for requested test run
+========== Starting test discovery ==========
+No test is available in H:\Desktop\Team skeletom10\Testing6\bin\Debug\Testing6.dll. Make sure that test discoverer & executors are registered and platform & framework version settings are appropriate and try again.
+========== Test discovery finished: 164 Tests found in 5.1 sec ==========
+========== Starting test run ==========
+========== Test run finished: 180 Tests (135 Passed, 45 Failed, 0 Skipped) run in 3.1 min ==========
+========== Starting test run ==========
+========== Test run finished: 180 Tests (135 Passed, 45 Failed, 0 Skipped) run in 3.1 min ==========
+Starting test discovery for requested test run
+========== Starting test discovery ==========
+========== Test discovery finished: 16 Tests found in 2 sec ==========
+========== Starting test run ==========
+========== Test run finished: 180 Tests (135 Passed, 45 Failed, 0 Skipped) run in 3.1 min ==========
+========== Starting test run ==========
+========== Test run finished: 180 Tests (135 Passed, 45 Failed, 0 Skipped) run in 3.1 min ==========
+Starting test discovery for requested test run
+========== Starting test discovery ==========
+========== Test discovery finished: 16 Tests found in 1.8 sec ==========
+========== Starting test run ==========
+========== Test run finished: 180 Tests (180 Passed, 0 Failed, 0 Skipped) run in 7.9 sec ==========
+Building Test Projects
+Starting test discovery for requested test run
+========== Starting test discovery ==========
+No test is available in H:\Desktop\Team skeletom10\Testing5\bin\Debug\Testing5.dll. Make sure that test discoverer & executors are registered and platform & framework version settings are appropriate and try again.
+========== Test discovery finished: 0 Tests found in 3.5 sec ==========
+Executing test method: Testing5.tstSupplier.ValidMethodOK
+========== Starting test run ==========
+========== Test run aborted: 0 Tests (0 Passed, 0 Failed, 0 Skipped) run in < 1 ms ==========
+Building Test Projects
+Executing test method: Testing5.tstSupplier.ValidMethodOK
+========== Starting test run ==========
+========== Test run aborted: 0 Tests (0 Passed, 0 Failed, 0 Skipped) run in < 1 ms ==========
+Starting test discovery for requested test run
+========== Starting test discovery ==========
+No test is available in H:\Desktop\Team skeletom10\ClassLibrary\bin\Debug\ClassLibrary.dll. Make sure that test discoverer & executors are registered and platform & framework version settings are appropriate and try again.
+No test is available in H:\Desktop\Team skeletom10\Testing6\bin\Debug\Testing6.dll. Make sure that test discoverer & executors are registered and platform & framework version settings are appropriate and try again.
+========== Test discovery finished: 164 Tests found in 4.5 sec ==========
+========== Starting test run ==========
+========== Test run finished: 164 Tests (164 Passed, 0 Failed, 0 Skipped) run in 6.5 sec ==========
