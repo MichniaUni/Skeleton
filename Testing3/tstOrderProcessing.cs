@@ -44,16 +44,16 @@ namespace Testing3
             Assert.AreEqual(AnOrderProcessing.IsCancelled, TestData);
         }
         [TestMethod]
-        public void DateAddedPropertyOK()
+        public void OrderDatePropertyOK()
         {
             //create an instance of the class we want to create
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AnOrderProcessing.DateAdded = TestData;
+            AnOrderProcessing.OrderDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrderProcessing.DateAdded, TestData);
+            Assert.AreEqual(AnOrderProcessing.OrderDate, TestData);
         }
         [TestMethod]
         public void OrderStatusPropertyOK()
@@ -127,7 +127,7 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestDateAddedFound()
+        public void TestOrderDateFound()
         {
             //create an instance of the class we want to create 
             clsOrderProcessing AnOrderProcessing = new clsOrderProcessing();
@@ -140,7 +140,7 @@ namespace Testing3
             //invoke the method
             Found = AnOrderProcessing.Find(OrderId);
             //check the DateAdded property
-            if (AnOrderProcessing.DateAdded != Convert.ToDateTime("01/02/2024"))
+            if (AnOrderProcessing.OrderDate != Convert.ToDateTime("01/02/2024"))
             {
                 OK = false;
             }

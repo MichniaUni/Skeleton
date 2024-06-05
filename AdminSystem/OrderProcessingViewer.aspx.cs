@@ -17,7 +17,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the order id for this entry
         Response.Write(AnOrderProcessing.OrderId);
         //display the date added for the entry
-        Response.Write(AnOrderProcessing.DateAdded);
+        Response.Write(AnOrderProcessing.OrderDate);
         //display the Iscancelled for the entry
         Response.Write(AnOrderProcessing.IsCancelled);
         //display the order status for the entry
