@@ -1,0 +1,5 @@
+﻿Build started at 23:31...
+1>------ Build started: Project: TestingShipmentManagement, Configuration: Debug Any CPU ------
+1>  TestingShipmentManagement -> H:\todayssssss\Testing4\bin\Debug\Testing4.dll
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+========== Build completed at 23:31 and took 01.064 seconds ==========
