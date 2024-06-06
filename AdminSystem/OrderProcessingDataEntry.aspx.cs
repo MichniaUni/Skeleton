@@ -8,8 +8,36 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the orderProcessing to be processed 
+        OrderId = Convert.ToInt32(Session["Orderid"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
+       
+    }
+    void DisplayOrder()
+    {
+        //create an instance of the order book
+        clsOrderProcessingCollection OrderBook = new clsOrderProcessingCollection();
+        //find the record to update
+        OrderBook.ThisOrder.Find(OrderId);
+        //display the data for the record
+        txtOrderId.Text = OrderBook.ThisOrder.OrderId.ToString();
+        txtOrderDate.Text = OrderBook.ThisOrder.OrderDate.ToString();
+        txtOrderStatus.Text = OrderBook.ThisOrder.ToString();
+        txtPaymentMethod.Text = OrderBook.ThisOrder.PaymentMethod.ToString();
+        chkIsCancelled.Checked = OrderBook.ThisOrder.IsCancelled;
+
 
     }
 
@@ -31,16 +59,39 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrderProcessing.Valid(OrderDate, OrderStatus, PaymentMethod);
         if (Error == "")
         {
+            //capture the OrderId
+            AnOrderProcessing.OrderId = OrderId; //Dont miss this bit !!!its important
             //capture the OrderDate
             AnOrderProcessing.OrderDate = Convert.ToDateTime(OrderDate);
             //capture the OrderStatus
             AnOrderProcessing.OrderStatus = OrderStatus;
             //capture the PaymentMethod
             AnOrderProcessing.PaymentMethod = PaymentMethod;
-            //store the OrderProcessing in the session object
-            Session["AnOrderProcesing"] = AnOrderProcessing;
-            //navigate to the view page
-            Response.Redirect("OrderProcessingViewer.aspx");
+            //capture IsCancelled
+            AnOrderProcessing.IsCancelled = chkIsCancelled.Checked;
+            //create a new instance of the order processing collection
+            clsOrderProcessingCollection OrderList = new clsOrderProcessingCollection();
+            //if this is a new record .i.e. OrderId = -1 then add the data
+            if (OrderId == -1)
+            {
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrderProcessing;
+                //add the new record
+                OrderList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrder.Find(OrderId);
+                //set the ThisOrder Property
+                OrderList.ThisOrder = AnOrderProcessing;
+                //update the record
+                OrderList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("OrderProcessingList.aspx");
+           
         }
         else
         {
