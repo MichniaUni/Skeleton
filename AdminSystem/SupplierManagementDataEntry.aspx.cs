@@ -47,12 +47,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnSupplier.Quantity = Convert.ToInt32(Quantity);
             //capture price
             AnSupplier.Price = Convert.ToInt32(Price);
+            //capture shipmentstatus
+            AnSupplier.Shipmentstatus= chkShipped.Checked;
+            //create a new instance of the supplier collection
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            //set the thissupplier property
+            SupplierList.ThisSupplier = AnSupplier;
+            //add new record
+            SupplierList.Add();
+            //redirect to back to list page
+            Response.Redirect("SupplierManagementList.aspx");
             
 
-            //store the supplier in the session object
-            Session["AnSupplier"] = AnSupplier;
-            //redirect to view page
-            Response.Redirect("SupplierManagementViewer.aspx");
+   
         }
 
         else

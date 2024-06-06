@@ -8,6 +8,8 @@ namespace ClassLibrary
 
         //private data member for the list
         List<clsSupplier> mSupplierList = new List<clsSupplier>();
+        //private member data for thius supplier
+        clsSupplier mThisSupplier= new clsSupplier();
         public List<clsSupplier> SupplierList
         {
             get
@@ -33,7 +35,19 @@ namespace ClassLibrary
                 //
             }
         }
-        public clsSupplier ThisSupplier { get; set; }
+        public clsSupplier ThisSupplier
+        {
+            get
+            {
+                //return the privete data
+                return mThisSupplier;
+            }
+            set
+            {//set the private data
+
+                mThisSupplier = value;
+            }
+        }
 
         public clsSupplierCollection()
         {
@@ -66,6 +80,22 @@ namespace ClassLibrary
                 Index++;
             }
 
+        }
+
+        public int Add()
+        {
+           //add a record to the database on the values of mThisSupplier
+           //connect to the database
+           clsDataConnection DB= new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@ProductionDate", mThisSupplier.ProductionDate);
+            DB.AddParameter("@ExpiryDate", mThisSupplier.ExpiryDate);
+            DB.AddParameter("@Quantity", mThisSupplier.Quantity);
+            DB.AddParameter("@Price", mThisSupplier.Price);
+            DB.AddParameter("@Shipmentstatus", mThisSupplier.Shipmentstatus);
+            //excute the query returning the primary key value
+            return DB.Execute("sproc_tblSupplier_Insert");
         }
     }
 }
