@@ -122,7 +122,51 @@ namespace Testing5
             //test to see tht two values are same
             Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of class we want
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
 
+            //create the item of test data
+            clsSupplier TestItem = new clsSupplier();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Shipmentstatus = true;
+
+            TestItem.SupplierName = "Test";
+            TestItem.Quantity = 10;
+            TestItem.ProductionDate = DateTime.Now;
+            TestItem.ExpiryDate = DateTime.Now;
+            TestItem.Price = 10.5m;
+            //set This address to test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //add record
+            PrimaryKey = AllSuppliers.Add();
+            //set the primary key of the test data
+            TestItem.SupplierID = PrimaryKey;
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //modify the test record
+            TestItem.Shipmentstatus = false;
+
+            TestItem.SupplierName = "Another Name";
+            TestItem.Quantity = 5;
+            TestItem.ProductionDate = DateTime.Now;
+            TestItem.ExpiryDate = DateTime.Now;
+            TestItem.Price = 15.5m;
+            //set the record based on new test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //update the record
+            AllSuppliers.Update();
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+
+            //test to see tht two values are same
+            Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
+
+        }
 
     }
 }
