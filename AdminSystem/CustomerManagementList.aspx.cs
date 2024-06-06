@@ -17,6 +17,13 @@ public partial class _1_List : System.Web.UI.Page
             DisplayCustomers();
         }
 
+        //create a new instance of clsCustomerUser
+        clsCustomerUser AnUser = new clsCustomerUser();
+        //get the data from the sesson object
+        AnUser = (clsCustomerUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as:  " + AnUser.UserName);
+
     }
 
     void DisplayCustomers()
@@ -33,18 +40,12 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataBind();
     }
 
-
-
-
-
-
-
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //store -1 into the session object to indicate this is a new record
         Session["CustomerId"] = -1;
         //redirect to the data entry page
-        Response.Redirect("CustomerDataEntry.aspx");
+        Response.Redirect("CustomerManagementDataEntry.aspx");
     }
 
     protected void btnEdit_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in the session object
             Session["CustomerId"] = CustomerId;
             //redirect to the delete page
-            Response.Redirect("CustomerManagemenetConfirmDelete.aspx");
+            Response.Redirect("CustomerManagementConfirmDelete.aspx");
 
         }
         else //if no record has been selected
@@ -88,7 +89,7 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
 
-    
+
     }
 
     protected void btnApplyFilter_Click(object sender, EventArgs e)
@@ -128,5 +129,11 @@ public partial class _1_List : System.Web.UI.Page
     protected void txtEnterFirstName_TextChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void btnBacktoMain_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

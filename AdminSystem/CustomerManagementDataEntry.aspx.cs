@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
-{   
+{
     //variable to store the primary key with page level scope
     Int32 CustomerId;
     protected void Page_Load(object sender, EventArgs e)
@@ -33,12 +33,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         customerCollection.ThisCustomer.Find(CustomerId);
         //display the data for the record
         txtCustomerId.Text = customerCollection.ThisCustomer.CustomerId.ToString();
-        txtFirstName.Text = customerCollection.ThisCustomer.CustomerId.ToString();
-        txtLastName.Text = customerCollection.ThisCustomer.CustomerId.ToString();
-        txtAge.Text = customerCollection.ThisCustomer.CustomerId.ToString();
-        txtDateJoined.Text = customerCollection.ThisCustomer.CustomerId.ToString();
-        txtPhoneNumber.Text = customerCollection.ThisCustomer.CustomerId.ToString();
-        chkisActive.Text = customerCollection.ThisCustomer.CustomerId.ToString();
+        txtFirstName.Text = customerCollection.ThisCustomer.FirstName.ToString();
+        txtLastName.Text = customerCollection.ThisCustomer.LastName.ToString();
+        txtAge.Text = customerCollection.ThisCustomer.Age.ToString();
+        txtDateJoined.Text = customerCollection.ThisCustomer.DateJoined.ToString();
+        txtPhoneNumber.Text = customerCollection.ThisCustomer.PhoneNumber.ToString();
+        chkisActive.Checked = customerCollection.ThisCustomer.isActive;
     }
 
 
@@ -124,16 +124,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //find the record
         Found = ACustomer.Find(CustomerId);
         //if found
-        if (Found == true) 
+        if (Found == true)
         {
             //display the values of the properties in the form
             txtAge.Text = ACustomer.Age.ToString();
             txtPhoneNumber.Text = ACustomer.PhoneNumber.ToString();
             txtFirstName.Text = ACustomer.FirstName;
             txtLastName.Text = ACustomer.LastName;
-            txtDateJoined.Text = ACustomer.DateJoined.ToString();    
+            txtDateJoined.Text = ACustomer.DateJoined.ToString();
             chkisActive.Checked = ACustomer.isActive;
         }
 
+    }
+
+    protected void btnBackToMain_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("CustomerManagementList.aspx");
     }
 }

@@ -9,6 +9,7 @@
 <body> <form id="form1" runat="server">
         &nbsp;<p>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 376px; top: 50px; position: absolute" Text="Find" />
+            <asp:Button ID="btnBackToMain" runat="server" OnClick="btnBackToMain_Click" style="z-index: 1; left: 508px; top: 20px; position: absolute" Text="Return to Main Menu" />
         </p>
         <div>
             <asp:Label ID="lblCustomerId" runat="server" style="z-index: 1; left: 9px; top: 17px; position: absolute; bottom: 587px" Text="Customer ID" width="124px"></asp:Label>
@@ -56,7 +57,7 @@
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 13px; top: 640px; position: absolute" Text="OK" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 76px; top: 639px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 76px; top: 639px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
         <p>
             &nbsp;</p>
