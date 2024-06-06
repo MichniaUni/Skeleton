@@ -131,7 +131,7 @@ namespace Testing1
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //test to see if the result is true
@@ -150,11 +150,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the CustomerID
-            if (ACustomer.CustomerId != 5)
+            if (ACustomer.CustomerId != 198)
             {
                 OK = false;
             }
@@ -172,7 +172,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the Customer
@@ -193,7 +193,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the Customer
@@ -215,7 +215,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the Customer
@@ -237,7 +237,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the Customer
@@ -259,7 +259,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the Customer
@@ -281,7 +281,7 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 5;
+            Int32 CustomerId = 198;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the Customer
