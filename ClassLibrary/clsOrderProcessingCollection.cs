@@ -8,6 +8,9 @@ namespace ClassLibrary
         //private data member for the list
         List<clsOrderProcessing> mOrderList = new List<clsOrderProcessing>();
 
+        //private data member for ThisOrder
+        clsOrderProcessing mThisOrder = new clsOrderProcessing();
+
         //public property for the address list
         public List<clsOrderProcessing> OrderList
         {
@@ -22,7 +25,20 @@ namespace ClassLibrary
                 mOrderList = value;
             }
         }
-        public clsOrderProcessing ThisOrder { get; set; }
+        //public property for ThisOrder
+        public clsOrderProcessing ThisOrder 
+        {
+            get
+            {
+                //return the private data
+                return mThisOrder;
+            }
+            set
+            {
+                //set the private data
+                mThisOrder = value;
+            }
+        }
 
         //public property for count
         public int Count
@@ -67,6 +83,35 @@ namespace ClassLibrary
                 Index++;
             }
         }
-      
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@IsCancelled", mThisOrder.IsCancelled);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@PaymentMethod", mThisOrder.PaymentMethod);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the valies of ThisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@PaymentMethod", mThisOrder.PaymentMethod);
+            DB.AddParameter("@IsCancelled", mThisOrder.IsCancelled);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
     }
 }
