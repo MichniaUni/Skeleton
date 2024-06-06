@@ -187,5 +187,118 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string Ordernum, string Street, string City, string Postcode, string Deliverydate)
+        {
+
+            //create a string variable to store the error
+            String Error = "";
+            DateTime DateTemp;
+            Int32 ordTemp;
+
+            //if the ordernum is blank
+            if (Street.Length == 0)
+            {
+                //record error
+                Error = Error + "The street cannot be blank : ";
+            }
+          
+
+            //if the house no is greater than 6 character
+            if (Street.Length > 50)
+            {
+                //record the error
+                Error = Error + "the street name must be less than 50 character: ";
+            }
+
+            
+            if (City.Length == 0)
+            {
+                //record error
+                Error = Error + "The city cannot be blank : ";
+            }
+
+            //if the house no is greater than 6 character
+            if (City.Length > 50)
+            {
+                //record the error
+                Error = Error + "the city must be less than 50 character: ";
+            }
+
+
+            //if the ordernum is blank
+            if (Postcode.Length == 0)
+            {
+                //record error
+                Error = Error + "The postcode cannot be blank : ";
+            }
+
+            //if the house no is greater than 6 character
+            if (Postcode.Length > 10)
+            {
+                //record the error
+                Error = Error + "the postcode must be less than 10 character: ";
+            }
+
+
+
+            //copy the dateAdded value to the DateTemp variable
+            DateTime DateComp = DateTime.Now.Date;
+
+
+            //check to see if the date is less than today's date
+            try
+            {
+                //copy the date added to datetemp variable
+                DateTemp = Convert.ToDateTime(Deliverydate);
+
+                if (DateTemp < DateComp) //compare dateAdded with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp.AddDays(15))
+                {
+                    //record the error
+                    Error = Error + "The date cannot be more tha 15 days in the futuree : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+            try
+            {
+                //copy quantity value to the value to valuetemp variable
+                ordTemp = Convert.ToInt32(Ordernum);
+                //check if the value is less than 0
+                if (ordTemp < 0)
+                {
+                    //record the error
+                    Error = Error + "The order numbere cannot be less than 0:";
+
+                }
+
+
+                if (ordTemp > 99999999)
+                {
+                    //record the error
+                    Error = Error + "The ordernumber cannot be more than 99999999:";
+
+                }
+
+            }
+            catch
+            {
+                //record the erroe
+                Error = Error + "This is not a valid order number:";
+            }
+
+
+            return Error;
+        }
     }
 }
