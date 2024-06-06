@@ -115,5 +115,16 @@ namespace ClassLibrary
             DB.Execute("sproc_tblSupplier_Update");
 
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed by this supplier
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
+            //excute the stored procedure
+            DB.Execute("sproc_tblSupplier_Delete");
+        }
     }
 }

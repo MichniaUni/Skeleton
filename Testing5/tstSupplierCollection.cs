@@ -146,8 +146,7 @@ namespace Testing5
             PrimaryKey = AllSuppliers.Add();
             //set the primary key of the test data
             TestItem.SupplierID = PrimaryKey;
-            //find the record
-            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            
             //modify the test record
             TestItem.Shipmentstatus = false;
 
@@ -167,6 +166,42 @@ namespace Testing5
             Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of class we want
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+
+            //create the item of test data
+            clsSupplier TestItem = new clsSupplier();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Shipmentstatus = true;
+            TestItem.SupplierID = 3;
+            TestItem.SupplierName = "Test";
+            TestItem.Quantity = 10;
+            TestItem.ProductionDate = DateTime.Now;
+            TestItem.ExpiryDate = DateTime.Now;
+            TestItem.Price = 10.5m;
+            //set This address to test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //add record
+            PrimaryKey = AllSuppliers.Add();
+            //set the primary key of the test data
+            TestItem.SupplierID = PrimaryKey;
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //delete the record
+            AllSuppliers.Delete();
+            //now find the record
+            Boolean Found = AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);  
+            
+        }
+
+        
 
     }
 }

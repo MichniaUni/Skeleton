@@ -60,4 +60,24 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Plese select a record from the list to edit";
         }
     }
+
+    protected void btndelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the pk value of the record to be deleted
+        Int32 SupplierID;
+        //if record has been selected from the list
+        if (lstSupplierList.SelectedIndex != -1)
+        {
+            //get the pk value of record to delete
+            SupplierID = Convert.ToInt32(lstSupplierList.SelectedValue);
+            //store the data in the session object
+            Session["SupplierID"] = SupplierID;
+            //redirect to delete page
+            Response.Redirect("SupplierManagementConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            lblError.Text = "Plese select a record from the list to delete";
+        }
+    }
 }
