@@ -235,13 +235,13 @@ namespace Testing1
             FilteredCustomers.ReportByFirstName("Espanol");
             if (FilteredCustomers.Count == 2)
             {
-                //check to see that the first record is 64
-                if (FilteredCustomers.CustomerList[0].CustomerId !=64)
+                //check to see that the first record is 184
+                if (FilteredCustomers.CustomerList[1].CustomerId !=184)
                 {
                     OK = false;
                 }
                 //check to see that the second record is 65
-                if (FilteredCustomers.CustomerList[1].CustomerId !=65)
+                if (FilteredCustomers.CustomerList[0].CustomerId !=65)
                 {
                     OK = false;
                 }
