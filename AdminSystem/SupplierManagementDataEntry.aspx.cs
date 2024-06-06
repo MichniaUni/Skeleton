@@ -8,8 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the pk value with page level scope
+    Int32 SupplierID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the supplier to be processed
+        SupplierID = Convert.ToInt32(Session["SupplierID"]);
+        if (IsPostBack==false)
+        {
+            //if this is not a new record
+            if (SupplierID != -1)
+            {
+                //diplay the current data for the record
+                DisplaySupplier();
+            }
+        }
+    }
+
+    public void DisplaySupplier()
+    {
+        //create an instance of the supplier book
+        clsSupplierCollection SupplierBook = new clsSupplierCollection();
+        //find the record to update
+        SupplierBook.ThisSupplier.Find(SupplierID);
+        //display the data for the record
+        txtSupplierID.Text= SupplierBook.ThisSupplier.SupplierID.ToString();
+        txtSupplierName.Text= SupplierBook.ThisSupplier.SupplierName.ToString();
+        txtProductionDate.Text= SupplierBook.ThisSupplier.ProductionDate.ToString();
+        txtExpiryDate.Text= SupplierBook.ThisSupplier.ExpiryDate.ToString();
+        txtPrice.Text= SupplierBook.ThisSupplier.Price.ToString();
+        txtQuantity.Text=SupplierBook.ThisSupplier.Quantity.ToString();
+        chkShipped.Checked = SupplierBook.ThisSupplier.Shipmentstatus;
 
     }
 
@@ -35,7 +64,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnSupplier.Valid(SupplierName, ProductionDate, ExpiryDate, Quantity, Price);
         if (Error == "")
         {
-            
+            //capture supplierid
+            AnSupplier.SupplierID = SupplierID;
             //capture Supplier name
             AnSupplier.SupplierName = SupplierName;
             
@@ -51,10 +81,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnSupplier.Shipmentstatus= chkShipped.Checked;
             //create a new instance of the supplier collection
             clsSupplierCollection SupplierList = new clsSupplierCollection();
-            //set the thissupplier property
-            SupplierList.ThisSupplier = AnSupplier;
-            //add new record
-            SupplierList.Add();
+            //if this is a new record i.e. supplierid =-1 then add the data
+            if (SupplierID == -1)
+            {
+
+
+                //set the thissupplier property
+                SupplierList.ThisSupplier = AnSupplier;
+                //add new record
+                SupplierList.Add();
+
+            }
+            //otherwise it must be an update
+
+            else
+            {
+                //find thr recordto update
+                SupplierList.ThisSupplier.Find(SupplierID);
+                //set thissupplier propery
+                SupplierList.ThisSupplier= AnSupplier;
+                //update the record
+                SupplierList.Update();
+            }
             //redirect to back to list page
             Response.Redirect("SupplierManagementList.aspx");
             

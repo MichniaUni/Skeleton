@@ -97,5 +97,23 @@ namespace ClassLibrary
             //excute the query returning the primary key value
             return DB.Execute("sproc_tblSupplier_Insert");
         }
+
+        public void Update()
+        {
+            //update an existing record based on the value4 of thissupplier
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@SupplierID", mThisSupplier.SupplierID);
+            DB.AddParameter("@SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("@ProductionDate", mThisSupplier.ProductionDate);
+            DB.AddParameter("@ExpiryDate", mThisSupplier.ExpiryDate);
+            DB.AddParameter("@Quantity", mThisSupplier.Quantity);
+            DB.AddParameter("@Price", mThisSupplier.Price);
+            DB.AddParameter("@Shipmentstatus", mThisSupplier.Shipmentstatus);
+            //excute the stored procedure
+            DB.Execute("sproc_tblSupplier_Update");
+
+        }
     }
 }
