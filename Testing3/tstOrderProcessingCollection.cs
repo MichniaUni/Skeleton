@@ -82,6 +82,66 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllOrderProcessing.Count, TestList.Count);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want  to create 
+            clsOrderProcessingCollection AllOrderProcessing = new clsOrderProcessingCollection();
+            //create the item of test data
+            clsOrderProcessing TestItem = new clsOrderProcessing();
+            //varaible to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderId = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderStatus = "pending";
+            TestItem.PaymentMethod = "cash";
+            TestItem.IsCancelled = true;
+            //set ThisOrder to the test data
+            AllOrderProcessing.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrderProcessing.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //Find the record
+            AllOrderProcessing.ThisOrder.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrderProcessing.ThisOrder, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessingCollection AllOrderProcessing = new clsOrderProcessingCollection();
+            //create the item of the test data
+            clsOrderProcessing TestItem = new clsOrderProcessing();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderStatus = "confirmed";
+            TestItem.PaymentMethod = "card";
+            TestItem.IsCancelled = true;
+            //set ThisOrder to the test data
+            AllOrderProcessing.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrderProcessing.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //Modify the test record
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderStatus = "pending";
+            TestItem.PaymentMethod = "cash on delivery";
+            TestItem.IsCancelled = false;
+            //set the record based on the new test data
+            AllOrderProcessing.ThisOrder = TestItem;
+            //update the record
+            AllOrderProcessing.Update();
+            //find the record 
+            AllOrderProcessing.ThisOrder.Find(PrimaryKey);
+            //test to see if ThisOrder matches the test data
+            Assert.AreEqual(AllOrderProcessing.ThisOrder, TestItem);
+        }
 
     }
 }
