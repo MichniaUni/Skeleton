@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ListBox ID="lstCustomerList" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; height: 372px; width: 405px"></asp:ListBox>
+            <asp:ListBox ID="lstCustomerList" runat="server" style="z-index: 1; left: 10px; top: 99px; position: absolute; height: 282px; width: 394px"></asp:ListBox>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 10px; top: 411px; position: absolute" Text="Add" />
         </div>
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 76px; top: 412px; position: absolute" Text="Edit" />
@@ -19,6 +19,7 @@
         <asp:TextBox ID="txtEnterFirstName" runat="server" OnTextChanged="txtEnterFirstName_TextChanged" style="z-index: 1; left: 290px; top: 479px; position: absolute"></asp:TextBox>
         <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 10px; top: 561px; position: absolute" Text="Apply Filter" />
         <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 170px; top: 561px; position: absolute" Text="Clear Filter" />
+        <asp:Button ID="btnBacktoMain" runat="server" OnClick="btnBacktoMain_Click" style="z-index: 1; left: 461px; top: 69px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>

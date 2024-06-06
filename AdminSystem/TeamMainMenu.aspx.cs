@@ -20,8 +20,8 @@ public partial class TeamMainMenu : System.Web.UI.Page
 
     protected void btnCustomer_Click(object sender, EventArgs e)
     {
-        //redirect the user to the stock login page
-        Response.Redirect("HeroesDronesLogin.aspx");
+        //redirect the user to the customer login page
+        Response.Redirect("CustomerLogin.aspx");
     }
 
     protected void btnOrder_Click(object sender, EventArgs e)

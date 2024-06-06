@@ -33,6 +33,6 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     protected void btnNoDelete_Click(object sender, EventArgs e)
     {
         //redirect back to the main page
-        Response.Redirect("CustomerManagement.aspx");
+        Response.Redirect("CustomerManagementList.aspx");
     }
 }
