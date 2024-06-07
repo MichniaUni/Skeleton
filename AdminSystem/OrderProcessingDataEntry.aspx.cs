@@ -22,6 +22,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //display the current data for the record
                 DisplayOrder();
             }
+
         }
        
     }
@@ -121,5 +122,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPaymentMethod.Text = AnOrderProcessing.PaymentMethod;
             chkIsCancelled.Checked = AnOrderProcessing.IsCancelled;
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the data entr page
+        Response.Redirect("OrderProcessingList.aspx");
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

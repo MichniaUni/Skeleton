@@ -142,6 +142,90 @@ namespace Testing3
             //test to see if ThisOrder matches the test data
             Assert.AreEqual(AllOrderProcessing.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessingCollection AllOrderProcessing = new clsOrderProcessingCollection();
+            //create the item of the test data
+            clsOrderProcessing TestItem = new clsOrderProcessing();
+            //varaible to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderId = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderStatus = "Pending";
+            TestItem.PaymentMethod = "Card";
+            TestItem.IsCancelled = true;
+            //set ThisOrder to the test data
+            AllOrderProcessing.ThisOrder = TestItem;
+            //add the record
+            PrimaryKey = AllOrderProcessing.Add();
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+            //find the record
+            AllOrderProcessing.ThisOrder.Find(PrimaryKey);
+            //delete the record
+            AllOrderProcessing.Delete();
+            //now find the record
+            Boolean Found = AllOrderProcessing.ThisOrder.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByPaymentMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrderProcessingCollection AllOrderProcessing = new clsOrderProcessingCollection();
+            //create an instance of the filtered data
+            clsOrderProcessingCollection FilteredOrderProcessing = new clsOrderProcessingCollection();
+            //apply a blank string (should return all records)
+            FilteredOrderProcessing.ReportByPaymentMethod("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrderProcessing.Count, FilteredOrderProcessing.Count);
+
+        }
+        [TestMethod]
+        public void ReportByPaymentMethodNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderProcessingCollection FilteredOrderProcessing = new clsOrderProcessingCollection();
+            //apply a payment method that doesnt exist
+            FilteredOrderProcessing.ReportByPaymentMethod("zzzz zz zz");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrderProcessing.Count);
+        }
+        [TestMethod]
+        public void ReportByPaymentMethodTestDataFound()
+        {
+            //create an instance of the filtered data 
+            clsOrderProcessingCollection FilteredOrderProcessing = new clsOrderProcessingCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a payment method that doesnt exist
+            FilteredOrderProcessing.ReportByPaymentMethod("cashbypost");
+            //check that the two correct numbers of records are found
+            if (FilteredOrderProcessing.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredOrderProcessing.OrderList[0].OrderId != 69)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 26
+                if (FilteredOrderProcessing.OrderList[1].OrderId != 70)
+                {
+                    OK = false;
+
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
 
     }
 }
