@@ -83,4 +83,35 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "please selecet a record from the list to Delete";
         }
     }
+
+    protected void btnapply_Click(object sender, EventArgs e)
+    {
+        clsShipmentCollection AnShipment = new clsShipmentCollection();
+        AnShipment.ReportByPostCode(txtepostcode.Text);
+
+        lstshipmentlist.DataSource = AnShipment.ShipmentList;
+
+        lstshipmentlist.DataValueField = "shipmentid";
+
+        lstshipmentlist.DataTextField = "postcode";
+
+        lstshipmentlist.DataBind(); 
+    }
+
+    protected void btnclear_Click(object sender, EventArgs e)
+    {
+
+        clsShipmentCollection AnShipment = new clsShipmentCollection();
+        AnShipment.ReportByPostCode("");
+
+        txtepostcode.Text = "";
+
+        lstshipmentlist.DataSource = AnShipment.ShipmentList;
+
+        lstshipmentlist.DataValueField = "shipmentid";
+
+        lstshipmentlist.DataTextField = "postcode";
+
+        lstshipmentlist.DataBind();
+    }
 }

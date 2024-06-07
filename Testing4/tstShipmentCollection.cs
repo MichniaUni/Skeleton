@@ -261,5 +261,72 @@ namespace Testing4
 
 
         }
+
+
+        [TestMethod]
+
+        public void ReportByPostCodeMethodOK()
+        {
+            //create an instance
+            clsShipmentCollection AllShipments = new clsShipmentCollection();
+            //create an instance for filtered data
+            clsShipmentCollection FilteredShipments = new clsShipmentCollection();
+
+            //apply blank string (should return all record)
+            FilteredShipments.ReportByPostCode("");
+            //test
+            Assert.AreEqual(AllShipments.Count, FilteredShipments.Count);
+        }
+
+
+        [TestMethod]
+
+        public void ReportByPostCodeNoneFound()
+        {
+            
+            //create an instance for filtered data
+            clsShipmentCollection FilteredShipments = new clsShipmentCollection();
+
+            //apply blank string (should return all record)
+            FilteredShipments.ReportByPostCode("xxx xxx");
+            //test
+            Assert.AreEqual(0, FilteredShipments.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByPostCodeTestDataFoundFound()
+        {
+
+            //create an instance for filtered data
+            clsShipmentCollection FilteredShipments = new clsShipmentCollection();
+
+            //variable to store the outcome
+            Boolean OK = true;
+
+            //apply blank string (should return all record)
+            FilteredShipments.ReportByPostCode("yyy yyy");
+            //check that the correct number aof records are found
+            if (FilteredShipments.Count == 2)
+            {
+                //check to see if the first record is 25
+                if (FilteredShipments.ShipmentList[0].shipmentid != 35)
+                {
+                    OK = false;
+                }
+
+                //check to see if the first record is 26
+                if (FilteredShipments.ShipmentList[0].shipmentid != 37)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test
+            Assert.IsTrue(OK);
+        }
     }
 }
