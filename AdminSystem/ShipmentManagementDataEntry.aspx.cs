@@ -33,13 +33,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture ordernum
             AnShipment.ordernum = Convert.ToInt32(ordernum);
             AnShipment.street = street;
+            AnShipment.isDeliveryExpress = chkisdeliveryexpress.Checked;
             AnShipment.city = city;
             AnShipment.postcode = postcode;
             AnShipment.deliverydate = Convert.ToDateTime(deliverydate);
 
-            Session["AnShipment"] = AnShipment;
-            //navigate to viewer page
-            Response.Redirect("ShipmentManagementViewer.aspx");
+            clsShipmentCollection ShipmentList = new clsShipmentCollection();
+            //set the this address property
+            ShipmentList.ThisShipment = AnShipment;
+
+            //add a new record
+            ShipmentList.Add();
+
+          
+            //navigate to  list page
+            Response.Redirect("ShipmentManagementList.aspx");
         }
         else
         {
