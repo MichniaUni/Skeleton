@@ -5,6 +5,12 @@ namespace ClassLibrary
 {
     public class clsShipmentCollection
     {
+
+        //private data member for the list
+        List<clsShipment> mShipmentList = new List<clsShipment>();
+
+        //preivate data member for this Shipment
+        clsShipment mThisShipment = new clsShipment();  
         public clsShipmentCollection()
         {
             //variable for the index
@@ -41,8 +47,7 @@ namespace ClassLibrary
 
        
 
-        //private data member for the list
-        List<clsShipment> mShipmentList = new List<clsShipment>();
+        
 
 
 
@@ -71,6 +76,36 @@ namespace ClassLibrary
                 //laterrr
             }
         }
-        public clsShipment ThisShipment { get; set; }
+        public clsShipment ThisShipment
+        {
+            get
+            {
+                //erturn private data
+                return mThisShipment;
+            }
+            set
+            {
+                //set private data
+                mThisShipment = value;  
+            }
+        }
+
+        public int Add()
+        {
+            //adds a record to database based on the value of m thisshipment
+            // connect to the database
+           clsDataConnection DB = new clsDataConnection();
+            //set the paramaters for the stored procedure
+            DB.AddParameter("@street", mThisShipment.street);
+            DB.AddParameter("@city", mThisShipment.city);
+            DB.AddParameter("@postcode", mThisShipment.postcode);
+            DB.AddParameter("@deliverydate", mThisShipment.deliverydate);
+            DB.AddParameter("@ordernum", mThisShipment.ordernum);
+            DB.AddParameter("@isDeliveryExpress", mThisShipment.isDeliveryExpress);
+
+            //execute the query returning the primary key valuer
+            return DB.Execute("sproc_tblAddress_Insert");
+
+        }
     }
 }
