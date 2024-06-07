@@ -156,5 +156,66 @@ namespace Testing4
 
         }
 
+
+
+        [TestMethod]
+
+        public void UpdateMethodOK()
+        {
+            clsShipmentCollection AllShipment = new clsShipmentCollection();
+
+
+
+
+            //create teh itm of test test data
+
+            clsShipment TestItem = new clsShipment();
+
+            //variable to stroe prim key
+            Int32 PrimaryKey = 0;
+
+
+            //set its properties
+            TestItem.isDeliveryExpress = true;
+            
+            TestItem.street = "some street";
+            TestItem.city = "some city";
+            TestItem.postcode = "LE2 7FZ";
+            TestItem.deliverydate = DateTime.Now;
+            TestItem.ordernum = 1;
+
+           
+            //set THisShipment to the test data
+            AllShipment.ThisShipment = TestItem;
+            //add the record
+            PrimaryKey = AllShipment.Add();
+            //set the primary key to test data
+            TestItem.shipmentid = PrimaryKey;
+
+
+
+            //smodify the records
+            TestItem.isDeliveryExpress = false;
+            
+            TestItem.street = "some street2";
+            TestItem.city = "some city2";
+            TestItem.postcode = "LE2 7FA";
+            TestItem.deliverydate = DateTime.Now;
+            TestItem.ordernum = 7;
+
+            //set the record based on new test data
+            AllShipment.ThisShipment = TestItem;
+            //Update the record
+            AllShipment.Update();
+
+
+            //find the record
+            AllShipment.ThisShipment.Find(PrimaryKey);
+            //test to see that two values are thee same
+            Assert.AreEqual(AllShipment.ThisShipment, TestItem);
+
+
+        }
+
     }
 }

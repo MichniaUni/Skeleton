@@ -8,8 +8,8 @@
     <style type="text/css">
         .auto-style1 {
             position: absolute;
-            top: 39px;
-            left: 26px;
+            top: 19px;
+            left: 16px;
             z-index: 1;
             width: 348px;
             height: 453px;
@@ -20,6 +20,19 @@
             left: 30px;
             z-index: 1;
             width: 56px;
+        }
+        .auto-style3 {
+            position: absolute;
+            top: 507px;
+            left: 109px;
+            z-index: 1;
+            width: 56px;
+        }
+        .auto-style4 {
+            position: absolute;
+            top: 573px;
+            left: 20px;
+            z-index: 1;
         }
     </style>
 </head>
@@ -51,11 +64,13 @@
             <br />
             <br />
             <br />
+            <asp:Button ID="btnEdit" runat="server" CssClass="auto-style3" OnClick="btnEdit_Click" Text="Edit" />
             <br />
             <asp:Button ID="btnAdd" runat="server" CssClass="auto-style2" OnClick="btnAdd_Click" Text="Add" />
             <br />
             <br />
             <br />
+            <asp:Label ID="lblError" runat="server" CssClass="auto-style4"></asp:Label>
             <br />
             <br />
             <br />

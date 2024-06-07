@@ -39,4 +39,26 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("ShipmentManagementDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to stre primary key
+        Int32 shipmentid;
+        //if record has been selected from the list
+        if(lstshipmentlist.SelectedIndex != -1)
+        {
+            //gte the primary key value
+            shipmentid = Convert.ToInt32(lstshipmentlist.SelectedValue);
+            //store session
+            Session["shipmentid"]= shipmentid;
+            //redirect
+            Response.Redirect("ShipmentManagementDataEntry.aspx");
+
+        }
+        //if no record has been selected
+        else
+        {
+            lblError.Text = "please selecet a record from the list to edit";
+        }
+    }
 }
