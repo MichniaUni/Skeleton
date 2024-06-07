@@ -50,6 +50,7 @@
     <Compile Include="clsOrderUser.cs" />
     <Compile Include="clsShipment.cs" />
     <Compile Include="clsShipmentCollection.cs" />
+    <Compile Include="clsShipmentUser.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsStockCollection.cs" />
     <Compile Include="clsStockUser.cs" />

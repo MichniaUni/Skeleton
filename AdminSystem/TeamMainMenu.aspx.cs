@@ -33,7 +33,7 @@ public partial class TeamMainMenu : System.Web.UI.Page
     protected void btnStaff_Click(object sender, EventArgs e)
     {
         //redirect the user to the stock login page
-        Response.Redirect("HeroesDronesLogin.aspx");
+        Response.Redirect("Shipment.aspx");
     }
 
     protected void btnSupplier_Click(object sender, EventArgs e)
