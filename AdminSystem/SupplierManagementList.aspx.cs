@@ -80,4 +80,45 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Plese select a record from the list to delete";
         }
     }
+
+  
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance
+        clsSupplierCollection AnSupplier = new clsSupplierCollection();
+        //retrive the value of supplier name from the presentation layer
+        AnSupplier.ReportBySupplierName(txtFilter.Text);
+        //set the data source to the list list of suppliers in the collectiom
+        lstSupplierList.DataSource= AnSupplier.SupplierList;
+        //set the name of the primary key
+        lstSupplierList.DataValueField = "SupplierID";
+        //set the name of the firld to display
+        lstSupplierList.DataTextField = "SupplierName";
+        //bind data to list
+        lstSupplierList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of supplier object
+        clsSupplierCollection AnSupplier = new clsSupplierCollection();
+        //set an empty string
+        AnSupplier.ReportBySupplierName("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list list of suppliers in the collectiom
+        lstSupplierList.DataSource = AnSupplier.SupplierList;
+        //set the name of the primary key
+        lstSupplierList.DataValueField = "SupplierID";
+        //set the name of the firld to display
+        lstSupplierList.DataTextField = "SupplierName";
+        //bind data to list
+        lstSupplierList.DataBind();
+    }
+
+    protected void txtFilter_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

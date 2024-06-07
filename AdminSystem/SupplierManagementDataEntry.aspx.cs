@@ -33,7 +33,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         SupplierBook.ThisSupplier.Find(SupplierID);
         //display the data for the record
         txtSupplierID.Text= SupplierBook.ThisSupplier.SupplierID.ToString();
-        txtSupplierName.Text= SupplierBook.ThisSupplier.SupplierName.ToString();
+        txtSupplierName.Text = SupplierBook.ThisSupplier.SupplierName.ToString();
         txtProductionDate.Text= SupplierBook.ThisSupplier.ProductionDate.ToString();
         txtExpiryDate.Text= SupplierBook.ThisSupplier.ExpiryDate.ToString();
         txtPrice.Text= SupplierBook.ThisSupplier.Price.ToString();

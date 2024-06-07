@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace ClassLibrary
 {
+    
     public class clsSupplierCollection
     {
 
@@ -50,7 +52,9 @@ namespace ClassLibrary
         }
 
         public clsSupplierCollection()
-        {
+        { 
+
+            
             //variable for the index 
             Int32 Index = 0;
             //variable to store the recpord count
@@ -59,8 +63,12 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //excute the stored procdure
             DB.Execute("sproc_tblSupplier_SelectALL");
-            //get the count of record
-            RecordCount = DB.Count;
+
+            //populate the array list with the data table
+            PopulateArray(DB);
+
+            /*//get the count of record
+            RecordCount = DB.Count;*/
 
             //while there are records to process
             while (Index < RecordCount)
@@ -77,8 +85,10 @@ namespace ClassLibrary
                 //add the record to the privete data member
                 mSupplierList.Add(AnSupplier);
                 //point at the next record
-                Index++;
-            }
+                Index++;   
+
+            
+        }
 
         }
 
@@ -126,5 +136,50 @@ namespace ClassLibrary
             //excute the stored procedure
             DB.Execute("sproc_tblSupplier_Delete");
         }
+
+        public void ReportBySupplierName(string SupplierName)
+        {
+            //filters record based on fill or parlial suppliername
+            //conect to the database
+            clsDataConnection DB= new clsDataConnection();
+            //send the suppliername parameter to database
+            DB.AddParameter("@SupplierName", SupplierName);
+            //excute the stored procedure
+            DB.Execute("sproc_tblSupplier_FilterBySupplierName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+        public void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter db
+            //variable fir the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of the record
+             RecordCount = DB.Count;
+            //clear the private array list
+            mSupplierList = new List<clsSupplier>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank supplier
+                clsSupplier AnSupplier = new clsSupplier();
+                //read the fields for the current record
+                AnSupplier.SupplierID = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
+                AnSupplier.ProductionDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ProductionDate"]);
+                AnSupplier.SupplierName = Convert.ToString(DB.DataTable.Rows[Index]["SupplierName"]);
+                AnSupplier.Shipmentstatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["Shipmentstatus"]);
+                AnSupplier.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
+                AnSupplier.ExpiryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ExpiryDate"]);
+                AnSupplier.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                //add the record to the privete data member
+                mSupplierList.Add(AnSupplier);
+                //point at the next record
+                Index++;
+            }
+            
+        }
+
     }
 }
