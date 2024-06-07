@@ -295,7 +295,7 @@ namespace Testing4
 
         [TestMethod]
 
-        public void ReportByPostCodeTestDataFoundFound()
+        public void ReportByPostCodeTestDataFound()
         {
 
             //create an instance for filtered data
@@ -310,13 +310,13 @@ namespace Testing4
             if (FilteredShipments.Count == 2)
             {
                 //check to see if the first record is 25
-                if (FilteredShipments.ShipmentList[0].shipmentid != 35)
+                if (FilteredShipments.ShipmentList[0].shipmentid != 47)
                 {
                     OK = false;
                 }
 
                 //check to see if the first record is 26
-                if (FilteredShipments.ShipmentList[0].shipmentid != 37)
+                if (FilteredShipments.ShipmentList[0].shipmentid != 49)
                 {
                     OK = false;
                 }

@@ -16,7 +16,7 @@ public partial class shipmentLogin : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         //creazte an instance of the Heroes user class
-        clsStockUser AnUser = new clsStockUser();
+        clsShipmentUser AnUser = new clsShipmentUser();
         //create the variable to store the user name and password
         string UserName = txtUserName.Text;
         string Password = txtPassword.Text;
