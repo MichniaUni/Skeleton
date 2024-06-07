@@ -107,5 +107,26 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblAddress_Insert");
 
         }
+
+
+
+        public void Update()
+        {
+            //update an existing record based on Thisshipment
+            //connect to the database
+
+            clsDataConnection DB = new clsDataConnection();
+            //set the paramaters for the stored procedure
+            DB.AddParameter("@shipmentid", mThisShipment.shipmentid);
+            DB.AddParameter("@street", mThisShipment.street);
+            DB.AddParameter("@city", mThisShipment.city);
+            DB.AddParameter("@postcode", mThisShipment.postcode);
+            DB.AddParameter("@deliverydate", mThisShipment.deliverydate);
+            DB.AddParameter("@ordernum", mThisShipment.ordernum);
+            DB.AddParameter("@isDeliveryExpress", mThisShipment.isDeliveryExpress);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblShipment_Update");
+        }
     }
 }
