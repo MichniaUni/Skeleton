@@ -39,8 +39,5 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Redirect("SupplierManagementDataEntry.aspx");
     }
 
-    protected void btnEdit_Click(object sender, EventArgs e)
-    {
-
-    }
+    
 }

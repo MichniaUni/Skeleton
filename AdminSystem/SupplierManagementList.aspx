@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">    <div>
         </div>
-        <asp:ListBox ID="lstSupplierList" runat="server" Height="400px" Width="270px"></asp:ListBox>
+        <asp:ListBox ID="lstSupplierList" runat="server" Height="400px" Width="270px"></asp:ListBox><asp:Button runat="server" Text="Return To Main Menu" ID="btnReturn" OnClick="btnReturn_Click"></asp:Button>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
