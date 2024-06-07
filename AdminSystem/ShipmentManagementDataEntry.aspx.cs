@@ -17,23 +17,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {   //create a new instance of clsShipment
         clsShipment AnShipment = new clsShipment();
         //capture shipment id
-        AnShipment.shipmentid = Convert.ToInt32(txtshipmentid.Text);
-        //capture order id
-        AnShipment.ordernum = Convert.ToInt32(txtordernum.Text);
-        //capture street
-        AnShipment.street = txtstreet.Text;
-        //capture city
-        AnShipment.city = txtcity.Text;
-        //capture postcode
-        AnShipment.postcode = txtpostcode.Text;
-        //capture deliverydate
-        AnShipment.deliverydate = Convert.ToDateTime(DateTime.Now);
-        //capture Expressdelivery
-        AnShipment.isDeliveryExpress = chkisdeliveryexpress.Checked;
+       
+        string ordernum = txtordernum.Text; 
+        string street = txtstreet.Text;
+        string city = txtcity.Text;     
+        string postcode = txtpostcode.Text; 
+        string deliverydate = txtdeliverydate.Text; 
+        string isDeliveryExpress = chkisdeliveryexpress.Text;
         //store the shipment id in the object session
-        Session["AnShipment"]=AnShipment;
-        //navigate to viewer page
-        Response.Redirect("ShipmentManagementViewer.aspx");
+        string Error = "";
+       
+        Error = AnShipment.Valid(ordernum, street, city, postcode, deliverydate);
+        if (Error == "")
+        {
+            //capture ordernum
+            AnShipment.ordernum = Convert.ToInt32(ordernum);
+            AnShipment.street = street;
+            AnShipment.city = city;
+            AnShipment.postcode = postcode;
+            AnShipment.deliverydate = Convert.ToDateTime(deliverydate);
+
+            Session["AnShipment"] = AnShipment;
+            //navigate to viewer page
+            Response.Redirect("ShipmentManagementViewer.aspx");
+        }
+        else
+        {
+            //display the error mesage
+            lblerror.Text = Error;
+        }
     }
 
    
