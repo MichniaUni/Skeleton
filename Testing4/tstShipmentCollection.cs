@@ -217,5 +217,49 @@ namespace Testing4
 
         }
 
+
+
+        [TestMethod]
+
+        public void DeleteMethodOK()
+        {
+            clsShipmentCollection AllShipment = new clsShipmentCollection();
+
+
+
+
+            //create the item of test test data
+
+            clsShipment TestItem = new clsShipment();
+
+            //variable to stroe prim key
+            Int32 PrimaryKey = 0;
+
+
+            //set its properties
+            TestItem.isDeliveryExpress = true;
+            TestItem.shipmentid = 1;
+            TestItem.street = "some street";
+            TestItem.city = "some city";
+            TestItem.postcode = "LE2 7FZ";
+            TestItem.deliverydate = DateTime.Now;
+            TestItem.ordernum = 1;
+
+            //set ThisShipment to the test data
+            AllShipment.ThisShipment = TestItem;
+            //add the record
+            PrimaryKey = AllShipment.Add();
+            //set the primary key to test data
+            TestItem.shipmentid = PrimaryKey;
+            //fint the record
+            AllShipment.ThisShipment.Find(PrimaryKey);
+            //delete the record
+            AllShipment.Delete();
+            //test to see that two values are thee same
+
+            Assert.AreEqual(AllShipment.ThisShipment, TestItem);
+
+
+        }
     }
 }

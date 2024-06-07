@@ -128,5 +128,21 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblShipment_Update");
         }
+
+
+
+        public void Delete()
+        {
+            //Delete an existing record based on Thisshipment
+            //connect to the database
+
+            clsDataConnection DB = new clsDataConnection();
+            //set the paramaters for the stored procedure
+            DB.AddParameter("@shipmentid", mThisShipment.shipmentid);
+            
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblShipment_Delete");
+        }
     }
 }
